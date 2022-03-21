@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
 import 'package:pockeet/core/init/navigation/concrete/navigation_route.dart';
 
+import 'core/theme/app_theme.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -14,6 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: NavigationRoute.instance.generateRoute,
       navigatorKey: NavigationManager.instance.navigatorKey,
+      theme: ThemeManager.createTheme(AppDarkTheme()),
       home: Scaffold(
         appBar: AppBar(
           title: Text('Material App Bar'),
