@@ -1,0 +1,10 @@
+{
+  "appBar" : {
+      "title":{
+        "transaction" : "Transaction",
+        "statistic":"Statistic",
+        "add":"Add",
+        "welcomeBack":"Welcome Back!"
+      }
+  }
+}
