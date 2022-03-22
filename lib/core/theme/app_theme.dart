@@ -12,10 +12,10 @@ class AppDarkTheme extends ITheme {
 }
 
 abstract class ThemeManager {
-  final AppColors colors = AppColors();
   static ThemeData createTheme(ITheme theme) {
     return ThemeData(
       colorScheme: theme.colorTheme.colorScheme,
+      scaffoldBackgroundColor: theme.colorTheme.colors?.backgroundColor,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         backgroundColor: theme.colorTheme.colors?.blackCardBackgroundColor,
         selectedItemColor: theme.colorTheme.colors?.primaryPurpleColor,
