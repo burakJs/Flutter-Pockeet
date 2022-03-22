@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:pockeet/core/feature/onboard/view/onboard_view.dart';
 import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
 import 'package:pockeet/core/init/navigation/concrete/navigation_route.dart';
 
@@ -13,7 +14,10 @@ Future<void> main() async {
   runApp(
     EasyLocalization(
       child: MyApp(),
-      supportedLocales: [LanguageManager.instance.enLocale, LanguageManager.instance.trLocale],
+      supportedLocales: [
+        LanguageManager.instance.enLocale,
+        LanguageManager.instance.trLocale
+      ],
       path: AppConstants.langAssetsPath,
     ),
   );
@@ -32,16 +36,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       theme: ThemeManager.createTheme(AppDarkTheme()),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      ),
+      home: OnboardView(),
     );
   }
 }
