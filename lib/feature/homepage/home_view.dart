@@ -22,7 +22,7 @@ class HomeView extends StatelessWidget {
                 Column(
                   children: const [
                     Text("Welcome Back!"),
-                    Text("Devon Albex"),
+                    Text("Devon Albexx"),
                   ],
                 ),
                 SizedBox(
