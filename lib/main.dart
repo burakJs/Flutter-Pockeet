@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
 import 'package:pockeet/core/init/navigation/concrete/navigation_route.dart';
+import 'package:pockeet/feature/statistic/view/statistic_view.dart';
 
 import 'core/constants/app_constants.dart';
 import 'core/init/langugae/language_manager.dart';
@@ -32,16 +33,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       theme: ThemeManager.createTheme(AppDarkTheme()),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
-        ),
-      ),
+      home: const StatisticView(),
     );
   }
 }
