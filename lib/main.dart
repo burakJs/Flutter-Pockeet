@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
 import 'package:pockeet/core/init/navigation/concrete/navigation_route.dart';
 import 'package:pockeet/feature/statistic/view/statistic_view.dart';
-
 import 'core/constants/app_constants.dart';
 import 'core/init/langugae/language_manager.dart';
 import 'core/theme/app_theme.dart';
+import 'feature/onboard/view/onboard_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +14,10 @@ Future<void> main() async {
   runApp(
     EasyLocalization(
       child: MyApp(),
-      supportedLocales: [LanguageManager.instance.enLocale, LanguageManager.instance.trLocale],
+      supportedLocales: [
+        LanguageManager.instance.enLocale,
+        LanguageManager.instance.trLocale
+      ],
       path: AppConstants.langAssetsPath,
     ),
   );
