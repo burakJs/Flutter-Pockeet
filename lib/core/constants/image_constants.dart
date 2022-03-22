@@ -13,4 +13,5 @@ class ImageConstants {
   final String statistic = 'Statistic'.toPng.withIconPath;
   final String transaction = 'transaction'.toPng.withIconPath;
   final String wifiHigh = 'WifiHigh'.toPng.withIconPath;
+  final String incomeImage = 'income_image'.toPng.withIconPath;
 }

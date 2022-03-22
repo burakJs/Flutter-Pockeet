@@ -2,8 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:pockeet/core/constants/color_constants.dart';
+import 'package:pockeet/core/constants/image_constants.dart';
 import 'package:pockeet/core/init/lang/locale_keys.g.dart';
 import 'package:pockeet/product/tabbar/app_tabbar.dart';
+
+import '../../../product/containers/total_container.dart';
 
 class StatisticView extends StatelessWidget {
   StatisticView({Key? key}) : super(key: key);
@@ -34,7 +37,26 @@ class StatisticView extends StatelessWidget {
               child: Container(color: context.randomColor),
             ),
             Expanded(
-              child: Container(color: context.randomColor),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TotalContainer(
+                      bgColor: colors.darkBlueColor,
+                      icon: Icons.arrow_circle_up_outlined,
+                      money: LocaleKeys.statistic_income.tr(),
+                      title: '\$5.609',
+                    ),
+                  ),
+                  Expanded(
+                    child: TotalContainer(
+                      bgColor: colors.lightRedColor,
+                      icon: Icons.arrow_circle_down_outlined,
+                      money: LocaleKeys.statistic_expanse.tr(),
+                      title: '\$5.609',
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ),
