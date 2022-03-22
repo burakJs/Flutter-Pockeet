@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       theme: ThemeManager.createTheme(AppDarkTheme()),
-      home: const StatisticView(),
+      home: StatisticView(),
     );
   }
 }

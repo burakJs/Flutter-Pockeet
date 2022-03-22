@@ -3,24 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:pockeet/core/constants/color_constants.dart';
 import 'package:pockeet/core/init/lang/locale_keys.g.dart';
+import 'package:pockeet/product/tabbar/app_tabbar.dart';
 
-class StatisticView extends StatefulWidget {
-  const StatisticView({Key? key}) : super(key: key);
+class StatisticView extends StatelessWidget {
+  StatisticView({Key? key}) : super(key: key);
 
-  @override
-  State<StatisticView> createState() => _StatisticViewState();
-}
-
-class _StatisticViewState extends State<StatisticView> with SingleTickerProviderStateMixin {
   final ColorConstants colors = ColorConstants.instance;
-  late final TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _tabController = TabController(length: 2, vsync: this);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,35 +20,8 @@ class _StatisticViewState extends State<StatisticView> with SingleTickerProvider
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
-              child: TabBar(
-                controller: _tabController,
-                indicatorColor: Colors.transparent,
-                unselectedLabelColor: colors.grayColor,
-                onTap: (i) => setState(() {}),
-                tabs: [
-                  Tab(
-                    child: AnimatedContainer(
-                      decoration: BoxDecoration(
-                        color: _tabController.index == 0 ? colors.primaryPurpleColor : colors.blackCardBackgroundColor,
-                        borderRadius: context.lowBorderRadius,
-                      ),
-                      duration: context.durationLow,
-                      child: Center(child: Text(LocaleKeys.statistic_income.tr())),
-                    ),
-                  ),
-                  Tab(
-                    child: AnimatedContainer(
-                      duration: context.durationLow,
-                      decoration: BoxDecoration(
-                        color: _tabController.index == 1 ? colors.primaryPurpleColor : colors.blackCardBackgroundColor,
-                        borderRadius: context.lowBorderRadius,
-                      ),
-                      child: Center(child: Text(LocaleKeys.statistic_expanse.tr())),
-                    ),
-                  ),
-                ],
-              ),
+            const Expanded(
+              child: AppTabbar(),
             ),
             Expanded(
               child: Padding(
