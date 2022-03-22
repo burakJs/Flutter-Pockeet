@@ -3,55 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:pockeet/core/constants/color_constants.dart';
 import 'package:pockeet/core/init/lang/locale_keys.g.dart';
+import 'package:pockeet/product/chart/total_chart.dart';
 import 'package:pockeet/product/tabbar/app_tabbar.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 import '../../../product/containers/total_container.dart';
 
-class _SalesData {
-  _SalesData(this.day, this.sales);
-
-  final int day;
-  final double sales;
-}
-
 class StatisticView extends StatelessWidget {
   StatisticView({Key? key}) : super(key: key);
 
   final ColorConstants colors = ColorConstants.instance;
-  List<_SalesData> data = [
-    _SalesData(1, 35),
-    _SalesData(2, 28),
-    _SalesData(3, 34),
-    _SalesData(4, 32),
-    _SalesData(5, 40),
-    _SalesData(6, 35),
-    _SalesData(7, 28),
-    _SalesData(8, 34),
-    _SalesData(9, 32),
-    _SalesData(10, 40),
-    _SalesData(11, 12),
-    _SalesData(12, 32),
-    _SalesData(13, 32),
-    _SalesData(14, 32),
-    _SalesData(15, 32),
-    _SalesData(16, 35),
-    _SalesData(17, 28),
-    _SalesData(18, 34),
-    _SalesData(19, 32),
-    _SalesData(20, 40),
-    _SalesData(21, 35),
-    _SalesData(22, 28),
-    _SalesData(23, 34),
-    _SalesData(24, 32),
-    _SalesData(25, 40),
-    _SalesData(26, 12),
-    _SalesData(27, 32),
-    _SalesData(28, 32),
-    _SalesData(29, 32),
-    _SalesData(30, 32),
-  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,44 +36,40 @@ class StatisticView extends StatelessWidget {
             ),
             Expanded(
               flex: 3,
-              child: SfCartesianChart(
-                primaryXAxis: CategoryAxis(),
-                tooltipBehavior: TooltipBehavior(enable: true),
-                series: <ChartSeries<_SalesData, int>>[
-                  AreaSeries(
-                    dataSource: data,
-                    xValueMapper: (_SalesData sales, _) => sales.day,
-                    yValueMapper: (_SalesData sales, _) => sales.sales,
-                    color: colors.primaryPurpleColor,
-                    name: 'Total',
-                  ),
-                ],
-              ),
+              child: TotalChart(),
             ),
             Expanded(
               child: Row(
                 children: [
-                  Expanded(
-                    child: TotalContainer(
-                      bgColor: colors.darkBlueColor,
-                      icon: Icons.arrow_circle_up_outlined,
-                      money: LocaleKeys.statistic_income.tr(),
-                      title: '\$5.609',
-                    ),
-                  ),
-                  Expanded(
-                    child: TotalContainer(
-                      bgColor: colors.lightRedColor,
-                      icon: Icons.arrow_circle_down_outlined,
-                      money: LocaleKeys.statistic_expanse.tr(),
-                      title: '\$5.609',
-                    ),
-                  )
+                  _incomeTotalContainer(),
+                  _expanseTotalContainer(),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Expanded _expanseTotalContainer() {
+    return Expanded(
+      child: TotalContainer(
+        bgColor: colors.lightRedColor,
+        icon: Icons.arrow_circle_down_outlined,
+        money: LocaleKeys.statistic_expanse.tr(),
+        title: '\$5.609',
+      ),
+    );
+  }
+
+  Expanded _incomeTotalContainer() {
+    return Expanded(
+      child: TotalContainer(
+        bgColor: colors.darkBlueColor,
+        icon: Icons.arrow_circle_up_outlined,
+        money: LocaleKeys.statistic_income.tr(),
+        title: '\$5.609',
       ),
     );
   }
