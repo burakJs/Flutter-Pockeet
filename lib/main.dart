@@ -10,9 +10,7 @@ import 'core/theme/app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await EasyLocalization.ensureInitialized();
-
   runApp(
     EasyLocalization(
       child: MyApp(),
