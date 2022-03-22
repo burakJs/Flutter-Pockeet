@@ -7,5 +7,4 @@ abstract class  LocaleKeys {
   static const appBar_title_welcomeBack = 'appBar.title.welcomeBack';
   static const appBar_title = 'appBar.title';
   static const appBar = 'appBar';
-
 }
