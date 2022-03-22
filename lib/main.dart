@@ -1,12 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:pockeet/core/feature/onboard/view/onboard_view.dart';
 import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
 import 'package:pockeet/core/init/navigation/concrete/navigation_route.dart';
-
 import 'core/constants/app_constants.dart';
 import 'core/init/langugae/language_manager.dart';
 import 'core/theme/app_theme.dart';
+import 'feature/onboard/view/onboard_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
