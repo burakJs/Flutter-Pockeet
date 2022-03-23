@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:pockeet/core/constants/color_constants.dart';
+import 'package:pockeet/product/tabbar/transaction_tabbar.dart';
 import 'package:pockeet/product/widget/custom_list_tile.dart';
 
 import '../../../product/models/transaction_model.dart';
@@ -39,7 +40,7 @@ class _TransactionViewState extends State<TransactionView> {
               decoration: BoxDecoration(
                   borderRadius: context.normalBorderRadius,
                   color: colors.blackCardBackgroundColor),
-              child: Center(child: Text('deneme')),
+              child: TransactionTabbar(),
               height: 70,
               width: context.dynamicWidth(0.8),
             ),
