@@ -1,0 +1,10 @@
+{
+  "appBar" : {
+      "title":{
+        "transaction" : "İşlem",
+        "statistic":"İstatistik",
+        "add":"Ekleme",
+        "welcomeBack":"Tekrar Hoşgeldin!"
+      }
+  }
+}
