@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:pockeet/core/constants/color_constants.dart';
-import 'package:pockeet/product/tabbar/transaction_tabbar.dart';
-import 'package:pockeet/product/widget/custom_list_tile.dart';
+import '../../../core/constants/color_constants.dart';
+import '../../../product/tabbar/transaction_tabbar.dart';
+import '../../../product/widget/custom_list_tile.dart';
 
 import '../../../product/models/transaction_model.dart';
 
@@ -28,8 +28,7 @@ class _TransactionViewState extends State<TransactionView> {
       body: Container(
         decoration: BoxDecoration(
           color: colors.backgroundColor,
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(40), topLeft: Radius.circular(40)),
+          borderRadius: BorderRadius.only(topRight: Radius.circular(40), topLeft: Radius.circular(40)),
         ),
         child: Column(
           children: [
@@ -37,9 +36,7 @@ class _TransactionViewState extends State<TransactionView> {
               height: context.dynamicHeight(0.02),
             ),
             Container(
-              decoration: BoxDecoration(
-                  borderRadius: context.normalBorderRadius,
-                  color: colors.blackCardBackgroundColor),
+              decoration: BoxDecoration(borderRadius: context.normalBorderRadius, color: colors.blackCardBackgroundColor),
               child: TransactionTabbar(),
               height: 70,
               width: context.dynamicWidth(0.8),
@@ -51,10 +48,7 @@ class _TransactionViewState extends State<TransactionView> {
               child: ListView.builder(
                   itemCount: datas.length,
                   itemBuilder: (context, index) {
-                    return CustomListTile(
-                        title: datas[index].title,
-                        money: datas[index].money,
-                        date: datas[index].date);
+                    return CustomListTile(title: datas[index].title, money: datas[index].money, date: datas[index].date);
                   }),
             )
           ],

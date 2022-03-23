@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:pockeet/core/constants/color_constants.dart';
-import 'package:pockeet/core/init/lang/locale_keys.g.dart';
-import 'package:pockeet/product/chart/total_chart.dart';
-import 'package:pockeet/product/tabbar/app_tabbar.dart';
+import '../../../core/constants/color_constants.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../product/chart/total_chart.dart';
+import '../../../product/tabbar/app_tabbar.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
