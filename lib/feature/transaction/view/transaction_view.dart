@@ -48,7 +48,7 @@ class _TransactionViewState extends State<TransactionView> {
               child: ListView.builder(
                   itemCount: datas.length,
                   itemBuilder: (context, index) {
-                    return CustomListTile(title: datas[index].title, money: datas[index].money, date: datas[index].date);
+                    return CustomListTile(title: datas[index].title, money: datas[index].money, date: datas[index].date.toString());
                   }),
             )
           ],
