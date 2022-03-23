@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:pockeet/core/constants/color_constants.dart';
-import 'package:pockeet/product/widget/custom_button.dart';
+import 'package:pockeet/feature/product/widget/custom_button.dart';
 
 import '../model/onboard_model.dart';
 

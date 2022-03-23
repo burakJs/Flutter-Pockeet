@@ -6,5 +6,10 @@
         "add":"Add",
         "welcomeBack":"Welcome Back!"
       }
+  },
+  "statistic": {
+    "totalBalance":"Total Balance",
+    "income":"Income",
+    "expanse":"Expanse"
   }
 }
