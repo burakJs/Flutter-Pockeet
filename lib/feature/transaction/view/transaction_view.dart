@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import '../../../core/constants/color_constants.dart';
+import '../../../product/models/transaction_model.dart';
 import '../../../product/tabbar/transaction_tabbar.dart';
 import '../../../product/widget/custom_list_tile.dart';
-
-import '../../../product/models/transaction_model.dart';
 
 class TransactionView extends StatefulWidget {
   TransactionView({Key? key}) : super(key: key);
@@ -48,7 +47,7 @@ class _TransactionViewState extends State<TransactionView> {
               child: ListView.builder(
                   itemCount: datas.length,
                   itemBuilder: (context, index) {
-                    return CustomListTile(title: datas[index].title, money: datas[index].money, date: datas[index].date);
+                    return CustomListTile(title: datas[index].title ?? '', money: datas[index].money ?? 0, date: datas[index].date.toString());
                   }),
             )
           ],
