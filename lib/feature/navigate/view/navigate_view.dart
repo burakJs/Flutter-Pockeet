@@ -33,9 +33,6 @@ class NavigateView extends StatelessWidget {
           FluidNavBarIcon(
             icon: Icons.graphic_eq,
           ),
-          FluidNavBarIcon(
-            icon: Icons.person,
-          ),
         ],
       ),
       body: BlocBuilder<NavigateBloc, int>(

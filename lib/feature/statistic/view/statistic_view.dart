@@ -6,6 +6,7 @@ import 'package:pockeet/core/data/concrete/firebase_manager.dart';
 import 'package:pockeet/feature/statistic/viewmodel/transaction_state.dart';
 import 'package:pockeet/product/data/transaction_manager.dart';
 import 'package:pockeet/product/models/transaction_model.dart';
+import 'package:pockeet/product/util/page_border_radius.dart';
 import '../../../core/constants/color_constants.dart';
 import '../../../core/init/lang/locale_keys.g.dart';
 import '../../../product/chart/total_chart.dart';
@@ -26,55 +27,63 @@ class StatisticView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: colors.primaryPurpleColor,
       appBar: AppBar(
         backgroundColor: colors.primaryPurpleColor,
         title: Text(LocaleKeys.appBar_title_statistic.tr()),
+        elevation: 0,
       ),
       body: SafeArea(
         child: BlocProvider(
           create: (context) => StatisticBloc()..getAllTransactionByIncome(),
-          child: Column(
-            children: [
-              Expanded(
-                child: BlocBuilder<StatisticBloc, StatisticState>(
-                  builder: (context, state) {
-                    return AppTabbar(
-                      changeCallBack: (int index) {
-                        context.read<StatisticBloc>().changeIncome();
-                      },
-                    );
-                  },
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: context.paddingNormal,
-                  child: _balanceAndCalendarRow(context, colors),
-                ),
-              ),
-              Expanded(
-                flex: 3,
-                child: BlocBuilder<StatisticBloc, StatisticState>(
-                  builder: (context, state) {
-                    if (state is StatisticLoading) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else {
-                      return TotalChart(
-                        data: (state as StatisticSuccess).list,
+          child: Container(
+            decoration: BoxDecoration(
+              color: colors.blackCardBackgroundColor,
+              borderRadius: PageBorderRadius.topSide(),
+            ),
+            child: Column(
+              children: [
+                Expanded(
+                  child: BlocBuilder<StatisticBloc, StatisticState>(
+                    builder: (context, state) {
+                      return AppTabbar(
+                        changeCallBack: (int index) {
+                          context.read<StatisticBloc>().changeIncome();
+                        },
                       );
-                    }
-                  },
+                    },
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Row(
-                  children: [
-                    _incomeTotalContainer(),
-                    _expanseTotalContainer(),
-                  ],
+                Expanded(
+                  child: Padding(
+                    padding: context.paddingNormal,
+                    child: _balanceAndCalendarRow(context, colors),
+                  ),
                 ),
-              ),
-            ],
+                Expanded(
+                  flex: 3,
+                  child: BlocBuilder<StatisticBloc, StatisticState>(
+                    builder: (context, state) {
+                      if (state is StatisticLoading) {
+                        return const Center(child: CircularProgressIndicator());
+                      } else {
+                        return TotalChart(
+                          data: (state as StatisticSuccess).list,
+                        );
+                      }
+                    },
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      _incomeTotalContainer(),
+                      _expanseTotalContainer(),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -130,8 +139,6 @@ class StatisticView extends StatelessWidget {
             const Spacer(),
           ],
         ),
-        const Spacer(),
-        _calendarBackgroundContainer(colors, context),
       ],
     );
   }
