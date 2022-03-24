@@ -19,7 +19,10 @@ Future<void> main() async {
   runApp(
     EasyLocalization(
       child: MyApp(),
-      supportedLocales: [LanguageManager.instance.enLocale, LanguageManager.instance.trLocale],
+      supportedLocales: [
+        LanguageManager.instance.enLocale,
+        LanguageManager.instance.trLocale
+      ],
       path: AppConstants.langAssetsPath,
     ),
   );
