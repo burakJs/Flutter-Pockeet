@@ -38,7 +38,7 @@ class HomeView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          LocaleKeys.appBar_title_welcomeBack.tr(),
+                          "Welcome Back!",
                           style: TextStyle(
                             color: colors.grayColor,
                           ),
@@ -85,7 +85,7 @@ class HomeView extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                LocaleKeys.home_availablebalance.tr(),
+                                "Avaliable Balance",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     color: colors.whiteColor),

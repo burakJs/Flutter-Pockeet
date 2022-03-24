@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:pockeet/core/constants/color_constants.dart';
-import 'package:pockeet/feature/product/widget/custom_button.dart';
+import '../../../core/constants/color_constants.dart';
+import '../../../product/widget/custom_button.dart';
 
 import '../model/onboard_model.dart';
 
@@ -46,17 +46,12 @@ class _OnboardViewState extends State<OnboardView> {
             _onboardPicture(i),
             Expanded(
               flex: 4,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _titleText(i, context),
-                    _descriptionText(i, context),
-                    BuildDot(currentIndex: currentIndex),
-                    CustomButton(
-                        title: 'Get Started',
-                        color: colors.pinkColor,
-                        ontap: () {})
-                  ]),
+              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                _titleText(i, context),
+                _descriptionText(i, context),
+                BuildDot(currentIndex: currentIndex),
+                CustomButton(title: 'Get Started', color: colors.pinkColor, ontap: () {})
+              ]),
             ),
           ]);
         },

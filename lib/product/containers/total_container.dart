@@ -1,9 +1,7 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 
 import '../../core/constants/color_constants.dart';
-import '../../core/init/lang/locale_keys.g.dart';
 
 class TotalContainer extends StatelessWidget {
   TotalContainer({Key? key, required this.title, required this.money, required this.icon, required this.bgColor}) : super(key: key);
