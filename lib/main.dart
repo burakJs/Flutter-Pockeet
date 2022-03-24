@@ -18,10 +18,13 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(
     EasyLocalization(
-      child: MyApp(),
-      supportedLocales: [LanguageManager.instance.enLocale, LanguageManager.instance.trLocale],
-      path: AppConstants.langAssetsPath,
-    ),
+        child: MyApp(),
+        supportedLocales: [
+          LanguageManager.instance.enLocale,
+          LanguageManager.instance.trLocale
+        ],
+        path: AppConstants.langAssetsPath,
+        startLocale: LanguageManager.instance.enLocale),
   );
 }
 
