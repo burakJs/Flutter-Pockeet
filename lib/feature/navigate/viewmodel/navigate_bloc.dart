@@ -14,7 +14,6 @@ class NavigateBloc extends Cubit<int> {
     TransactionView(),
     AddTransaction(),
     StatisticView(),
-    TransactionView(),
   ];
 
   void changePage(int pageIndex) {

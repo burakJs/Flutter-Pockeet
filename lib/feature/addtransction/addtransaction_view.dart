@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:pockeet/core/constants/color_constants.dart';
 
+import '../../product/util/page_border_radius.dart';
 import '../../product/widget/transaction_form.dart';
 
 class AddTransaction extends StatefulWidget {
@@ -33,8 +34,7 @@ class _AddTransactionState extends State<AddTransaction> {
           height: double.infinity,
           decoration: BoxDecoration(
             color: colors.backgroundColor,
-            borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(40), topLeft: Radius.circular(40)),
+            borderRadius: PageBorderRadius.topSide(),
           ),
           child: SingleChildScrollView(
             child: Column(children: [_imageCard(context), _form()]),
@@ -49,9 +49,7 @@ class _AddTransactionState extends State<AddTransaction> {
           Container(
               width: double.infinity,
               height: 200,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/icons/Card.png"))),
+              decoration: const BoxDecoration(image: DecorationImage(image: AssetImage("assets/icons/Card.png"))),
               child: _balanceTitle()),
         ]));
   }
@@ -72,17 +70,13 @@ class _AddTransactionState extends State<AddTransaction> {
         children: [
           Text(
             "Available Balance",
-            style: TextStyle(
-                fontWeight: FontWeight.w500, color: colors.whiteColor),
+            style: TextStyle(fontWeight: FontWeight.w500, color: colors.whiteColor),
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 40, top: 5),
             child: Text(
               "\$${balance}",
-              style: TextStyle(
-                  fontSize: 32,
-                  color: colors.whiteColor,
-                  fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 32, color: colors.whiteColor, fontWeight: FontWeight.w500),
             ),
           )
         ],

@@ -5,6 +5,7 @@ import 'package:pockeet/product/data/transaction_manager.dart';
 import '../../../core/constants/color_constants.dart';
 import '../../../product/models/transaction_model.dart';
 import '../../../product/tabbar/transaction_tabbar.dart';
+import '../../../product/util/page_border_radius.dart';
 import '../../../product/widget/custom_list_tile.dart';
 import 'package:intl/intl.dart';
 
@@ -48,9 +49,7 @@ class _TransactionViewState extends State<TransactionView> {
       body: Container(
         decoration: BoxDecoration(
           color: colors.backgroundColor,
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(40), topLeft: Radius.circular(40)),
-        ),
+          borderRadius: PageBorderRadius.topSide()),
         child: Column(
           children: [
             SizedBox(
