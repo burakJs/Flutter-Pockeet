@@ -1,9 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import '../../core/constants/color_constants.dart';
+import 'package:pockeet/core/constants/color_constants.dart';
+import 'package:pockeet/core/constants/image_constants.dart';
+import 'package:pockeet/core/init/lang/locale_keys.g.dart';
+import 'package:pockeet/feature/product/widget/pay_top_transfer_button.dart';
+import 'package:pockeet/feature/product/widget/payment_list_button.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
   final ColorConstants colors = ColorConstants.instance;
+  final ImageConstants images = ImageConstants.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +70,9 @@ class HomeView extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     height: 200,
-                    decoration: const BoxDecoration(image: DecorationImage(image: AssetImage("assets/icons/Card.png"))),
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(images.cardBackground))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -72,8 +80,10 @@ class HomeView extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                "Available Balance",
-                                style: TextStyle(fontWeight: FontWeight.w500, color: colors.whiteColor),
+                                "Avaliable Balance",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color: colors.whiteColor),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(bottom: 40, top: 5),
@@ -100,9 +110,15 @@ class HomeView extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            HomeButton(title: "Pay", image: Image.asset("assets/icons/Wallet.png")),
-                            HomeButton(title: "Top Up", image: Image.asset("assets/icons/Upload.png")),
-                            HomeButton(title: "Transfer", image: Image.asset("assets/icons/ArrowsLeftRight.png")),
+                            HomeButton(
+                                title: "Pay",
+                                image: Image.asset(images.wallet)),
+                            HomeButton(
+                                title: "Top Up",
+                                image: Image.asset(images.upload)),
+                            HomeButton(
+                                title: "Transfer",
+                                image: Image.asset(images.arrowsLeftRight)),
                           ],
                         ),
                       ),
@@ -128,10 +144,22 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  PaymentListButton(colors: colors, imageName: "Lightning", title: "Electricity"),
-                  PaymentListButton(colors: colors, imageName: "WifiHigh", title: "Internet"),
-                  PaymentListButton(colors: colors, imageName: "GameController", title: "Games"),
-                  PaymentListButton(colors: colors, imageName: "CirclesFour", title: "More"),
+                  PaymentListButton(
+                      colors: colors,
+                      imageName: images.lightning,
+                      title: "Electricity"),
+                  PaymentListButton(
+                      colors: colors,
+                      imageName: images.wifiHigh,
+                      title: "Internet"),
+                  PaymentListButton(
+                      colors: colors,
+                      imageName: images.gameController,
+                      title: "Games"),
+                  PaymentListButton(
+                      colors: colors,
+                      imageName: images.circlesFour,
+                      title: "More"),
                 ],
               ),
               const SizedBox(height: 20),
@@ -158,8 +186,9 @@ class HomeView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Card(
-                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
-                  color: ColorConstants.instance.blackCardBackgroundColor,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  color: colors.blackCardBackgroundColor,
                   child: ListTile(
                     leading: const CircleAvatar(
                       backgroundColor: Color(0xFF7997ff),
@@ -181,11 +210,9 @@ class HomeView extends StatelessWidget {
                       "10 Jan 2022 / 3.06 AM",
                       style: TextStyle(color: Color(0xFF9c9b9e), fontWeight: FontWeight.w500),
                     ),
-                    trailing: const Text(
+                    trailing: Text(
                       "+\$22.78",
-                      style: TextStyle(
-                        color: Color(0xFF5a7bef),
-                      ),
+                      style: TextStyle(color: colors.darkBlueColor),
                     ),
                   ),
                 ),
@@ -194,71 +221,6 @@ class HomeView extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class PaymentListButton extends StatelessWidget {
-  const PaymentListButton({
-    Key? key,
-    required this.imageName,
-    required this.colors,
-    required this.title,
-  }) : super(key: key);
-
-  final ColorConstants colors;
-  final String imageName;
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: const EdgeInsets.only(bottom: 10),
-          child: Center(child: Image.asset("assets/icons/$imageName.png")),
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(color: colors.blackCardBackgroundColor, borderRadius: const BorderRadius.all(Radius.circular(10))),
-        ),
-        Text(
-          title,
-          style: TextStyle(fontSize: 14, color: colors.whiteColor, fontWeight: FontWeight.w400),
-        ),
-      ],
-    );
-  }
-}
-
-class HomeButton extends StatelessWidget {
-  final String title;
-  final Image image;
-  const HomeButton({
-    required this.image,
-    required this.title,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 54,
-          height: 54,
-          child: Center(
-            child: image,
-          ),
-          decoration: BoxDecoration(color: ColorConstants.instance.primaryPurpleColor, borderRadius: const BorderRadius.all(Radius.circular(8))),
-        ),
-        const SizedBox(
-          height: 12,
-        ),
-        Text(
-          title,
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-        ),
-      ],
     );
   }
 }

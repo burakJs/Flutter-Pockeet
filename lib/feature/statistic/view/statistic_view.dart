@@ -115,13 +115,18 @@ class StatisticView extends StatelessWidget {
     );
   }
 
-  Container _calendarBackgroundContainer(ColorConstants colors, BuildContext context) {
+  Container _calendarBackgroundContainer(
+      ColorConstants colors, BuildContext context) {
     return Container(
       color: colors.blackCardBackgroundColor,
       child: Padding(
         padding: context.paddingLow,
         child: Row(
-          children: [_calendarText(context), context.emptySizedWidthBoxNormal, _calendarContainer(context, colors)],
+          children: [
+            _calendarText(context),
+            context.emptySizedWidthBoxNormal,
+            _calendarContainer(context, colors)
+          ],
         ),
       ),
     );
