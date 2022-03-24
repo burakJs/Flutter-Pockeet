@@ -9,6 +9,7 @@ import 'package:pockeet/feature/transaction/view/transaction_view.dart';
 import 'core/constants/app_constants.dart';
 import 'core/init/langugae/language_manager.dart';
 import 'core/theme/app_theme.dart';
+import 'feature/addtransction/addtransaction_view.dart';
 import 'feature/onboard/view/onboard_view.dart';
 
 Future<void> main() async {
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeManager.createTheme(AppDarkTheme()),
       home: BlocProvider(
         create: (context) => NavigateBloc(),
-        child: NavigateView(),
+        child: AddTransaction(),
       ),
     );
   }
