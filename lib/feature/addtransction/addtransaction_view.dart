@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:pockeet/core/constants/color_constants.dart';
-import 'package:pockeet/product/widget/custom_list_tile.dart';
 
-import '../../product/models/transaction_model.dart';
 import '../../product/widget/transaction_form.dart';
 
 class AddTransaction extends StatefulWidget {
@@ -127,6 +125,7 @@ class _AddTransactionState extends State<AddTransaction> {
                 } else {
                   balance -= int.parse(_amountController.text);
                 }
+                setState(() {});
               },
               child: Text('Sent',
                   style: TextStyle(
