@@ -17,7 +17,6 @@ abstract class  LocaleKeys {
   static const home_more = 'home.more';
   static const home_paymentList = 'home.paymentList';
   static const home_lastTransaction = 'home.lastTransaction';
-  static const home_seeAll = 'home.seeAll';
   static const home = 'home';
   static const statistic_totalBalance = 'statistic.totalBalance';
   static const statistic_income = 'statistic.income';

@@ -1,24 +1,27 @@
 {
   "appBar" : {
       "title":{
-        "transaction" : "İşlem",
-        "statistic":"İstatistik",
-        "add":"Ekleme",
-        "welcomeBack":"Tekrar Hoşgeldin!"
+        "transaction" : "Transaction",
+        "statistic":"Statistic",
+        "add":"Add",
+        "welcomeBack":"Welcome Back!"
       }
   },
-  "home" : {
-    "availableBalance" : "Kalan Bakiye",
-    "pay": "Cüzdan",
-    "topUp": "Yükle",
+  "home":{
+    "availableBalance":"Available Balance",
+    "pay": "Pay",
+    "topUp": "Top Up",
     "transfer": "Transfer",
-    "electricity":"Elektrik",
-    "internet":"İnternet",
-    "games": "Oyunlar",
-    "more": "Daha fazla",
-    "paymentList":"Ödeme Listesi",
-    "lastTransaction":"Son transferler",
-    "seeAll": "Hepsini Gör"
-
+    "electricity":"Electricity",
+    "internet":"Internet",
+    "games": "Games",
+    "more": "More",
+    "paymentList":"Payment List",
+    "lastTransaction":"Last Transaction"
+  },
+  "statistic": {
+    "totalBalance":"Toplam Miktar",
+    "income":"Gelir",
+    "expanse":"Gider"
   }
 }

@@ -17,8 +17,7 @@
     "games": "Games",
     "more": "More",
     "paymentList":"Payment List",
-    "lastTransaction":"Last Transaction",
-    "seeAll": "See All"
+    "lastTransaction":"Last Transaction"
   },
   "statistic": {
     "totalBalance":"Total Balance",
