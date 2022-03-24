@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeManager.createTheme(AppDarkTheme()),
       home: BlocProvider(
         create: (context) => NavigateBloc(),
-        child: AddTransaction(),
+        child: NavigateView(),
       ),
     );
   }
