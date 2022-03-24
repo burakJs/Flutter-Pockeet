@@ -17,4 +17,5 @@ class ImageConstants {
   final String upload = 'Upload'.toPng.withIconPath;
   final String arrowsLeftRight = 'ArrowsLeftRight'.toPng.withIconPath;
   final String incomeImage = 'income_image'.toPng.withIconPath;
+  final String bell = 'Bell'.toPng.withIconPath;
 }

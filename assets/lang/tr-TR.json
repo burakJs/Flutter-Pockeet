@@ -10,10 +10,10 @@
   "home" : {
     "availableBalance" : "Kalan Bakiye",
     "pay": "Cüzdan",
-    "topUp": "Top Up",
+    "topUp": "Yükle",
     "transfer": "Transfer",
     "electricity":"Elektrik",
-    "internet":"İternet",
+    "internet":"İnternet",
     "games": "Oyunlar",
     "more": "Daha fazla",
     "paymentList":"Ödeme Listesi",
