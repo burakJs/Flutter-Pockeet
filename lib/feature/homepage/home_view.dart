@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConstants.instance.backgroundColor,
+      backgroundColor: colors.backgroundColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 50.0),
@@ -38,7 +38,7 @@ class HomeView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Welcome Back!",
+                          LocaleKeys.appBar_title_welcomeBack.tr(),
                           style: TextStyle(
                             color: colors.grayColor,
                           ),
@@ -55,8 +55,7 @@ class HomeView extends StatelessWidget {
                     Container(
                       width: 40,
                       height: 40,
-                      child:
-                          Center(child: Image.asset("assets/icons/Bell.png")),
+                      child: Center(child: Image.asset(images.bell)),
                       decoration: BoxDecoration(
                         borderRadius:
                             const BorderRadius.all(Radius.circular(10)),
@@ -85,7 +84,7 @@ class HomeView extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                "Avaliable Balance",
+                                LocaleKeys.home_availableBalance.tr(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.w500,
                                     color: colors.whiteColor),
@@ -121,13 +120,13 @@ class HomeView extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             HomeButton(
-                                title: "Pay",
+                                title: LocaleKeys.home_pay.tr(),
                                 image: Image.asset(images.wallet)),
                             HomeButton(
-                                title: "Top Up",
+                                title: LocaleKeys.home_topUp.tr(),
                                 image: Image.asset(images.upload)),
                             HomeButton(
-                                title: "Transfer",
+                                title: LocaleKeys.home_transfer.tr(),
                                 image: Image.asset(images.arrowsLeftRight)),
                           ],
                         ),
@@ -142,7 +141,7 @@ class HomeView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Payment List",
+                      LocaleKeys.home_paymentList.tr(),
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
@@ -160,19 +159,19 @@ class HomeView extends StatelessWidget {
                   PaymentListButton(
                       colors: colors,
                       imageName: images.lightning,
-                      title: "Electricity"),
+                      title: LocaleKeys.home_electricity.tr()),
                   PaymentListButton(
                       colors: colors,
                       imageName: images.wifiHigh,
-                      title: "Internet"),
+                      title: LocaleKeys.home_internet.tr()),
                   PaymentListButton(
                       colors: colors,
                       imageName: images.gameController,
-                      title: "Games"),
+                      title: LocaleKeys.home_games.tr()),
                   PaymentListButton(
                       colors: colors,
                       imageName: images.circlesFour,
-                      title: "More"),
+                      title: LocaleKeys.home_more.tr()),
                 ],
               ),
               const SizedBox(height: 20),
@@ -182,7 +181,7 @@ class HomeView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Last Transaction",
+                      LocaleKeys.home_lastTransaction.tr(),
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
@@ -190,7 +189,7 @@ class HomeView extends StatelessWidget {
                     ),
                     const Spacer(),
                     Text(
-                      "See all",
+                      LocaleKeys.home_seeAll.tr(),
                       style: TextStyle(
                           fontSize: 18, color: colors.primaryPurpleColor),
                     ),
