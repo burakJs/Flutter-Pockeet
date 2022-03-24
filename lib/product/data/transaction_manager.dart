@@ -12,7 +12,7 @@ class TransactionManager {
 
   Future<List<TransactionModel>> getAllTransaction() async {
     List<QueryDocumentSnapshot<Map<String, dynamic>>> docs =
-        await service.getSecondDataFromFirebase(FirebaseEnum.users.name, 'EBDcSR3XeRUmTgOPIsOnRrTKgKz1', FirebaseEnum.transactions.name);
+        await service.getSecondDataFromFirebase(FirebaseEnum.users.name, fakeUID, FirebaseEnum.transactions.name);
     List<TransactionModel> modelList = [];
     if (service.auth.currentUser != null) {
       String uid = service.auth.currentUser!.uid;
@@ -76,7 +76,7 @@ class TransactionManager {
         fakeUID,
       );
     }
-    return result?['totalMoney'] as double;
+    return result?['money'] as double;
   }
 
   Future<String> getUsername() async {
