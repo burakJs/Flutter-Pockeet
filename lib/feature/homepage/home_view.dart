@@ -45,21 +45,16 @@ class HomeView extends StatelessWidget {
                         ),
                         Text(
                           "Devon Albex",
-                          style: TextStyle(
-                              color: colors.whiteColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500),
+                          style: TextStyle(color: colors.whiteColor, fontSize: 20, fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
                     Container(
                       width: 40,
                       height: 40,
-                      child:
-                          Center(child: Image.asset("assets/icons/Bell.png")),
+                      child: Center(child: Image.asset("assets/icons/Bell.png")),
                       decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
+                        borderRadius: const BorderRadius.all(Radius.circular(10)),
                         color: colors.blackCardBackgroundColor,
                       ),
                     ),
@@ -94,10 +89,7 @@ class HomeView extends StatelessWidget {
                                 padding: EdgeInsets.only(bottom: 40, top: 5),
                                 child: Text(
                                   "\$687.134",
-                                  style: TextStyle(
-                                      fontSize: 32,
-                                      color: colors.yellowColor,
-                                      fontWeight: FontWeight.w500),
+                                  style: TextStyle(fontSize: 32, color: colors.yellowColor, fontWeight: FontWeight.w500),
                                 ),
                               ),
                             ],
@@ -112,9 +104,7 @@ class HomeView extends StatelessWidget {
                     child: Container(
                       width: 260,
                       height: 120,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: colors.blackCardBackgroundColor),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)), color: colors.blackCardBackgroundColor),
                       child: Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: Row(
@@ -143,10 +133,7 @@ class HomeView extends StatelessWidget {
                   children: [
                     Text(
                       "Payment List",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: colors.whiteColor),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: colors.whiteColor),
                     ),
                   ],
                 ),
@@ -183,16 +170,12 @@ class HomeView extends StatelessWidget {
                   children: [
                     Text(
                       "Last Transaction",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: colors.whiteColor),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: colors.whiteColor),
                     ),
                     const Spacer(),
                     Text(
                       "See all",
-                      style: TextStyle(
-                          fontSize: 18, color: colors.primaryPurpleColor),
+                      style: TextStyle(fontSize: 18, color: colors.primaryPurpleColor),
                     ),
                   ],
                 ),
@@ -220,16 +203,12 @@ class HomeView extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Text(
                         "Floyd Miles",
-                        style: TextStyle(
-                            color: colors.whiteColor,
-                            fontWeight: FontWeight.w600),
+                        style: TextStyle(color: colors.whiteColor, fontWeight: FontWeight.w600),
                       ),
                     ),
                     subtitle: const Text(
                       "10 Jan 2022 / 3.06 AM",
-                      style: TextStyle(
-                          color: Color(0xFF9c9b9e),
-                          fontWeight: FontWeight.w500),
+                      style: TextStyle(color: Color(0xFF9c9b9e), fontWeight: FontWeight.w500),
                     ),
                     trailing: Text(
                       "+\$22.78",
