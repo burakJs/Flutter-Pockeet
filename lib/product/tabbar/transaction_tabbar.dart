@@ -6,8 +6,8 @@ import '../../core/init/lang/locale_keys.g.dart';
 import '../../core/constants/color_constants.dart';
 
 class TransactionTabbar extends StatefulWidget {
-  const TransactionTabbar({Key? key}) : super(key: key);
-
+  const TransactionTabbar({Key? key, required this.callBack}) : super(key: key);
+  final void Function(int index) callBack;
   @override
   State<TransactionTabbar> createState() => _TransactionTabbarState();
 }
@@ -51,6 +51,7 @@ class _TransactionTabbarState extends State<TransactionTabbar> with SingleTicker
           onTap: () {
             setState(() {
               _tabController.index = 1;
+              widget.callBack(1);
             });
           },
           child: Tab(

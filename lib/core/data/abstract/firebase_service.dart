@@ -14,4 +14,6 @@ abstract class FirebaseService {
   Future<String?> loginWithEmailAndPassword(Person person);
   Future<void> saveDataToFirestore(String collectionName, String documentName, Map<String, dynamic> model);
   Future<void> saveDataToSecondFirestore(String collectionName, String documentName, String secondCollectionName, Map<String, dynamic> model);
+  Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> getDataFromFirebaseByValue<T>(
+      String collectionName, String documentName, String secondCollectionName, String property, T value);
 }
