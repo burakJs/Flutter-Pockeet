@@ -9,6 +9,8 @@ import 'feature/navigate/viewmodel/navigate_bloc.dart';
 import 'core/constants/app_constants.dart';
 import 'core/init/langugae/language_manager.dart';
 import 'core/theme/app_theme.dart';
+import 'feature/addtransction/addtransaction_view.dart';
+import 'feature/onboard/view/onboard_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

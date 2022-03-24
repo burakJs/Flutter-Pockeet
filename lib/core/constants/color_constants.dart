@@ -15,4 +15,5 @@ class ColorConstants {
   final lightRedColor = const Color(0xfff87777);
   final redColor = const Color(0xfff73642);
   final darkBlueColor = const Color(0xff5a7bef);
+  final infoCardColor=const Color(0xff2b2a45);
 }
