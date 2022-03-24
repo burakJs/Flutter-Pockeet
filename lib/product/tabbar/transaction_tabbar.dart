@@ -12,7 +12,8 @@ class TransactionTabbar extends StatefulWidget {
   State<TransactionTabbar> createState() => _TransactionTabbarState();
 }
 
-class _TransactionTabbarState extends State<TransactionTabbar> with SingleTickerProviderStateMixin {
+class _TransactionTabbarState extends State<TransactionTabbar>
+    with SingleTickerProviderStateMixin {
   late final TabController _tabController;
   final ColorConstants colors = ColorConstants.instance;
   @override
@@ -34,12 +35,15 @@ class _TransactionTabbarState extends State<TransactionTabbar> with SingleTicker
           onTap: () {
             setState(() {
               _tabController.index = 0;
+              widget.callBack(0);
             });
           },
           child: Tab(
             child: AnimatedContainer(
               decoration: BoxDecoration(
-                color: _tabController.index == 0 ? colors.primaryPurpleColor : colors.blackCardBackgroundColor,
+                color: _tabController.index == 0
+                    ? colors.primaryPurpleColor
+                    : colors.blackCardBackgroundColor,
                 borderRadius: context.lowBorderRadius,
               ),
               duration: context.durationLow,
@@ -58,7 +62,9 @@ class _TransactionTabbarState extends State<TransactionTabbar> with SingleTicker
             child: AnimatedContainer(
               duration: context.durationLow,
               decoration: BoxDecoration(
-                color: _tabController.index == 1 ? colors.primaryPurpleColor : colors.blackCardBackgroundColor,
+                color: _tabController.index == 1
+                    ? colors.primaryPurpleColor
+                    : colors.blackCardBackgroundColor,
                 borderRadius: context.lowBorderRadius,
               ),
               child: Center(child: Text('Income')),
@@ -69,13 +75,16 @@ class _TransactionTabbarState extends State<TransactionTabbar> with SingleTicker
           onTap: () {
             setState(() {
               _tabController.index = 2;
+              widget.callBack(2);
             });
           },
           child: Tab(
             child: AnimatedContainer(
               duration: context.durationLow,
               decoration: BoxDecoration(
-                color: _tabController.index == 2 ? colors.primaryPurpleColor : colors.blackCardBackgroundColor,
+                color: _tabController.index == 2
+                    ? colors.primaryPurpleColor
+                    : colors.blackCardBackgroundColor,
                 borderRadius: context.lowBorderRadius,
               ),
               child: Center(child: Text('Expense')),

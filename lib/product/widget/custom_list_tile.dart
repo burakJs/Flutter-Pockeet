@@ -1,16 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import 'package:pockeet/product/models/transaction_model.dart';
+
 import '../../core/constants/color_constants.dart';
+import 'package:intl/intl.dart';
 
 class CustomListTile extends StatelessWidget {
-  final String title;
-  final String date;
-  final double money;
+  // final String title;
+  // final String date;
+  // final double money;
+  // final bool isIncome;
+  final TransactionModel model;
   const CustomListTile({
-    required this.title,
-    required this.date,
-    required this.money,
-  });
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     ColorConstants colors = ColorConstants.instance;
@@ -25,7 +31,7 @@ class CustomListTile extends StatelessWidget {
             backgroundColor: colors.yellowColor,
             child: Center(
               child: Text(
-                "${title[0].toUpperCase()}",
+                "${model.title?[0].toUpperCase()}",
                 style: TextStyle(color: Color(0xFF1f1e34)),
               ),
             ),
@@ -33,18 +39,22 @@ class CustomListTile extends StatelessWidget {
           title: Padding(
             padding: EdgeInsets.only(bottom: 8.0),
             child: Text(
-              title,
+              model.title ?? '',
               style: TextStyle(color: colors.whiteColor),
             ),
           ),
           subtitle: Text(
-            date,
+            DateFormat('dd/MM/yyyy, HH:mm').format(model.date!.toDate()),
             style: TextStyle(color: colors.grayColor),
           ),
           trailing: Text(
-            "\$ ${money.toString()}",
+            model.isIncome ?? false
+                ? "\$ ${model.money.toString()}"
+                : "\$- ${model.money.toString()}",
             style: TextStyle(
-              color: money > 0 ? colors.darkBlueColor : colors.redColor,
+              color: model.isIncome ?? false
+                  ? colors.darkBlueColor
+                  : colors.redColor,
             ),
           ),
         ),

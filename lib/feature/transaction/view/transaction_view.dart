@@ -6,6 +6,7 @@ import '../../../core/constants/color_constants.dart';
 import '../../../product/models/transaction_model.dart';
 import '../../../product/tabbar/transaction_tabbar.dart';
 import '../../../product/widget/custom_list_tile.dart';
+import 'package:intl/intl.dart';
 
 class TransactionView extends StatefulWidget {
   TransactionView({Key? key}) : super(key: key);
@@ -16,6 +17,24 @@ class TransactionView extends StatefulWidget {
 
 class _TransactionViewState extends State<TransactionView> {
   ColorConstants colors = ColorConstants.instance;
+  final TransactionManager manager = TransactionManager(FirebaseManager());
+  List<TransactionModel> result = [];
+  Future<void> getAllTransaction() async {
+    result = await manager.getAllTransaction();
+    setState(() {});
+  }
+
+  Future<void> getAllExpense() async {
+    result = await manager.getAllTransaction();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    getAllTransaction();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +48,8 @@ class _TransactionViewState extends State<TransactionView> {
       body: Container(
         decoration: BoxDecoration(
           color: colors.backgroundColor,
-          borderRadius: BorderRadius.only(topRight: Radius.circular(40), topLeft: Radius.circular(40)),
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(40), topLeft: Radius.circular(40)),
         ),
         child: Column(
           children: [
@@ -37,15 +57,24 @@ class _TransactionViewState extends State<TransactionView> {
               height: context.dynamicHeight(0.02),
             ),
             Container(
-              decoration: BoxDecoration(borderRadius: context.normalBorderRadius, color: colors.blackCardBackgroundColor),
+              decoration: BoxDecoration(
+                  borderRadius: context.normalBorderRadius,
+                  color: colors.blackCardBackgroundColor),
               child: TransactionTabbar(
                 callBack: (int index) async {
-                  // final TransactionManager manager = TransactionManager(FirebaseManager());
-                  // index == 1 isIncome = true
-                  // final result = await manager.getAllTransactionByIncome(index == 1);
-                  // for (var res in result) {
-                  //   print(res.title);
-                  // }
+                  //  index == 1 isIncome = true
+
+                  if (index == 0) {
+                    getAllTransaction();
+                  } else if (index == 2) {
+                    result =
+                        await manager.getAllTransactionByIncome(index != 2);
+                    setState(() {});
+                  } else if (index == 1) {
+                    result =
+                        await manager.getAllTransactionByIncome(index == 1);
+                    setState(() {});
+                  }
                 },
               ),
               height: 70,
@@ -56,9 +85,11 @@ class _TransactionViewState extends State<TransactionView> {
             ),
             Expanded(
               child: ListView.builder(
-                  itemCount: datas.length,
+                  itemCount: result.length,
                   itemBuilder: (context, index) {
-                    return CustomListTile(title: datas[index].title ?? '', money: datas[index].money ?? 0, date: datas[index].date.toString());
+                    return CustomListTile(
+                      model: result[index],
+                    );
                   }),
             )
           ],
