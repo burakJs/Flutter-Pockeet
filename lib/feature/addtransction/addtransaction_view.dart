@@ -1,6 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:pockeet/core/constants/color_constants.dart';
+import 'package:pockeet/core/data/concrete/firebase_manager.dart';
+import 'package:pockeet/product/data/transaction_manager.dart';
+import 'package:pockeet/product/models/transaction_model.dart';
+import 'package:pockeet/product/models/user_model.dart';
 
 import '../../product/util/page_border_radius.dart';
 import '../../product/widget/transaction_form.dart';
@@ -16,13 +21,46 @@ enum TransactionType { income, expense }
 
 class _AddTransactionState extends State<AddTransaction> {
   final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _massageController = TextEditingController();
+  final TextEditingController _messageController = TextEditingController();
   final FocusNode _amountNode = FocusNode();
   final FocusNode _massageNode = FocusNode();
   final _formKey = GlobalKey<FormState>();
   ColorConstants colors = ColorConstants.instance;
-  int balance = 640;
+  double balance = 0;
   TransactionType? type = TransactionType.income;
+  final TransactionManager manager = TransactionManager(FirebaseManager());
+  @override
+  void initState() {
+    super.initState();
+    getTotal();
+  }
+
+  Future<void> getTotal() async {
+    balance = await manager.getTotalMoney();
+    setState(() {});
+  }
+
+  Future<void> addTransaction() async {
+    TransactionModel model = TransactionModel(
+      money: double.parse(_amountController.text),
+      title: _messageController.text,
+      isIncome: type == TransactionType.income,
+      date: Timestamp.now(),
+    );
+
+    await manager.addTransaction(model);
+    double oldTotal = await manager.getTotalMoney();
+    if (type == TransactionType.income) {
+      oldTotal += (model.money ?? 0);
+    } else {
+      oldTotal -= (model.money ?? 0);
+    }
+    await manager.setTotalMoney(oldTotal);
+    getTotal();
+    setState(() {});
+    _amountController.text = '';
+    _messageController.text = '';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,7 +131,7 @@ class _AddTransactionState extends State<AddTransaction> {
           children: [
             LabledTextFormField(
               focusNode: _massageNode,
-              codeController: _massageController,
+              codeController: _messageController,
               labelText: 'Explantion',
               textInputType: TextInputType.text,
             ),
@@ -113,13 +151,10 @@ class _AddTransactionState extends State<AddTransaction> {
                   ),
                   minimumSize: const Size(200, 50),
                   maximumSize: const Size(250, 50)),
-              onPressed: () {
-                if (type == TransactionType.income) {
-                  balance += int.parse(_amountController.text);
-                } else {
-                  balance -= int.parse(_amountController.text);
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  await addTransaction();
                 }
-                setState(() {});
               },
               child: Text('Sent',
                   style: TextStyle(

@@ -43,14 +43,14 @@ class TotalContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    money,
+                    title,
                     style: context.textTheme.bodyLarge,
                   ),
                   Text(
-                    title,
+                    money,
                     style: context.textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.bold,
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                   )
                 ],
