@@ -100,4 +100,12 @@ class TransactionManager {
       await service.saveDataToSecondFirestore(FirebaseEnum.users.name, service.auth.currentUser!.uid, FirebaseEnum.transactions.name, model.toJson());
     }
   }
+
+  Future<void> setTotalMoney(double money) async {
+    if (service.auth.currentUser != null) {
+      await service.saveDataToFirestore(FirebaseEnum.users.name, service.auth.currentUser!.uid, {
+        'money': money,
+      });
+    }
+  }
 }

@@ -6,8 +6,8 @@ import '../../core/init/lang/locale_keys.g.dart';
 import '../../core/constants/color_constants.dart';
 
 class AppTabbar extends StatefulWidget {
-  const AppTabbar({Key? key}) : super(key: key);
-
+  const AppTabbar({Key? key, required this.changeCallBack}) : super(key: key);
+  final void Function(int index) changeCallBack;
   @override
   State<AppTabbar> createState() => _AppTabbarState();
 }
@@ -28,7 +28,9 @@ class _AppTabbarState extends State<AppTabbar> with SingleTickerProviderStateMix
       controller: _tabController,
       indicatorColor: Colors.transparent,
       unselectedLabelColor: colors.grayColor,
-      onTap: (i) => setState(() {}),
+      onTap: (i) => setState(() {
+        widget.changeCallBack(i);
+      }),
       tabs: [
         Tab(
           child: AnimatedContainer(
