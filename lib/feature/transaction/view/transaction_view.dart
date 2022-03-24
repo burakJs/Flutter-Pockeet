@@ -47,18 +47,14 @@ class _TransactionViewState extends State<TransactionView> {
         elevation: 0,
       ),
       body: Container(
-        decoration: BoxDecoration(
-          color: colors.backgroundColor,
-          borderRadius: PageBorderRadius.topSide()),
+        decoration: BoxDecoration(color: colors.backgroundColor, borderRadius: PageBorderRadius.topSide()),
         child: Column(
           children: [
             SizedBox(
               height: context.dynamicHeight(0.02),
             ),
             Container(
-              decoration: BoxDecoration(
-                  borderRadius: context.normalBorderRadius,
-                  color: colors.blackCardBackgroundColor),
+              decoration: BoxDecoration(borderRadius: context.normalBorderRadius, color: colors.blackCardBackgroundColor),
               child: TransactionTabbar(
                 callBack: (int index) async {
                   //  index == 1 isIncome = true
@@ -66,12 +62,10 @@ class _TransactionViewState extends State<TransactionView> {
                   if (index == 0) {
                     getAllTransaction();
                   } else if (index == 2) {
-                    result =
-                        await manager.getAllTransactionByIncome(index != 2);
+                    result = await manager.getAllTransactionByIncome(index != 2);
                     setState(() {});
                   } else if (index == 1) {
-                    result =
-                        await manager.getAllTransactionByIncome(index == 1);
+                    result = await manager.getAllTransactionByIncome(index == 1);
                     setState(() {});
                   }
                 },
@@ -90,7 +84,7 @@ class _TransactionViewState extends State<TransactionView> {
                       model: result[index],
                     );
                   }),
-            )
+            ),
           ],
         ),
       ),

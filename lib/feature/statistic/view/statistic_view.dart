@@ -99,7 +99,7 @@ class StatisticView extends StatelessWidget {
             child: TotalContainer(
               bgColor: colors.lightRedColor,
               icon: Icons.arrow_circle_down_outlined,
-              money: '\$$state',
+              money: '\$${state.toStringAsFixed(2)}',
               title: LocaleKeys.statistic_expanse.tr(),
             ),
           );
@@ -117,7 +117,7 @@ class StatisticView extends StatelessWidget {
             return TotalContainer(
               bgColor: colors.darkBlueColor,
               icon: Icons.arrow_circle_up_outlined,
-              money: '\$$state',
+              money: '\$${state.toStringAsFixed(2)}',
               title: LocaleKeys.statistic_income.tr(),
             );
           },
