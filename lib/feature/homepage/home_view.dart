@@ -8,6 +8,7 @@ import 'package:pockeet/feature/product/widget/pay_top_transfer_button.dart';
 import 'package:pockeet/feature/product/widget/payment_list_button.dart';
 import 'package:pockeet/product/data/transaction_manager.dart';
 import 'package:pockeet/product/models/transaction_model.dart';
+import 'package:pockeet/product/models/user_model.dart';
 
 import '../../product/widget/custom_list_tile.dart';
 
@@ -25,12 +26,20 @@ class _HomeViewState extends State<HomeView> {
   String name = '';
   double total = 0;
   List<TransactionModel> list = [];
+  bool isLoading = false;
 
   Future<void> setDatas() async {
+    changeLoading();
     name = await manager.getUsername();
     total = await manager.getTotalMoney();
     list = await manager.getAllTransaction();
-    setState(() {});
+    changeLoading();
+  }
+
+  void changeLoading() {
+    setState(() {
+      isLoading = !isLoading;
+    });
   }
 
   @override
@@ -55,10 +64,12 @@ class _HomeViewState extends State<HomeView> {
                   CircleAvatar(
                     backgroundColor: colors.primaryPurpleColor,
                     child: Center(
-                      child: Text(
-                        name[0],
-                        style: TextStyle(color: colors.whiteColor),
-                      ),
+                      child: isLoading
+                          ? const Center(child: CircularProgressIndicator())
+                          : Text(
+                              name[0],
+                              style: TextStyle(color: colors.whiteColor),
+                            ),
                     ),
                   ),
                   Column(
@@ -70,10 +81,12 @@ class _HomeViewState extends State<HomeView> {
                           color: colors.grayColor,
                         ),
                       ),
-                      Text(
-                        name,
-                        style: TextStyle(color: colors.whiteColor, fontSize: 20, fontWeight: FontWeight.w500),
-                      ),
+                      isLoading
+                          ? const Center(child: CircularProgressIndicator())
+                          : Text(
+                              name,
+                              style: TextStyle(color: colors.whiteColor, fontSize: 20, fontWeight: FontWeight.w500),
+                            ),
                     ],
                   ),
                   Container(
@@ -181,14 +194,16 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             Expanded(
-              child: ListView.builder(
-                itemCount: list.length,
-                itemBuilder: (context, index) {
-                  return CustomListTile(
-                    model: list[index],
-                  );
-                },
-              ),
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : ListView.builder(
+                      itemCount: list.length,
+                      itemBuilder: (context, index) {
+                        return CustomListTile(
+                          model: list[index],
+                        );
+                      },
+                    ),
             )
           ],
         ),
