@@ -26,6 +26,23 @@ class TransactionManager {
     return modelList;
   }
 
+  Future<List<TransactionModel>> getAllTransactionByIncome(bool isIncome) async {
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> docs = await service.getDataFromFirebaseByValue<bool>(
+        FirebaseEnum.users.name, 'EBDcSR3XeRUmTgOPIsOnRrTKgKz1', FirebaseEnum.transactions.name, FirebaseEnum.isIncome.name, isIncome);
+    List<TransactionModel> modelList = [];
+    if (service.auth.currentUser != null) {
+      String uid = service.auth.currentUser!.uid;
+      docs = await service.getDataFromFirebaseByValue<bool>(
+          FirebaseEnum.users.name, uid, FirebaseEnum.transactions.name, FirebaseEnum.isIncome.name, isIncome);
+    }
+    for (var doc in docs) {
+      TransactionModel newModel = TransactionModel.fromJson(doc.data());
+      modelList.add(newModel);
+    }
+
+    return modelList;
+  }
+
   Future<void> register(Person person) async {
     await service.registerWithEmailAndPassword(person);
     await service.loginWithEmailAndPassword(person);

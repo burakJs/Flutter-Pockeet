@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:pockeet/core/data/concrete/firebase_manager.dart';
+import 'package:pockeet/product/data/transaction_manager.dart';
 import '../../../core/constants/color_constants.dart';
 import '../../../product/models/transaction_model.dart';
 import '../../../product/tabbar/transaction_tabbar.dart';
@@ -36,7 +38,16 @@ class _TransactionViewState extends State<TransactionView> {
             ),
             Container(
               decoration: BoxDecoration(borderRadius: context.normalBorderRadius, color: colors.blackCardBackgroundColor),
-              child: TransactionTabbar(),
+              child: TransactionTabbar(
+                callBack: (int index) async {
+                  // final TransactionManager manager = TransactionManager(FirebaseManager());
+                  // index == 1 isIncome = true
+                  // final result = await manager.getAllTransactionByIncome(index == 1);
+                  // for (var res in result) {
+                  //   print(res.title);
+                  // }
+                },
+              ),
               height: 70,
               width: context.dynamicWidth(0.8),
             ),
