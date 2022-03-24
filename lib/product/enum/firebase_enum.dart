@@ -1,0 +1,4 @@
+enum FirebaseEnum {
+  users,
+  transactions,
+}
