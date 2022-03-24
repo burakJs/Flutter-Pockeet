@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kartal/kartal.dart';
 import 'package:pockeet/core/data/concrete/firebase_manager.dart';
+import 'package:pockeet/feature/statistic/viewmodel/transaction_state.dart';
 import 'package:pockeet/product/data/transaction_manager.dart';
 import 'package:pockeet/product/models/transaction_model.dart';
 import '../../../core/constants/color_constants.dart';
@@ -13,6 +15,8 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 import '../../../product/containers/total_container.dart';
+import '../viewmodel/total_balance_bloc.dart';
+import '../viewmodel/transaction_bloc.dart';
 
 class StatisticView extends StatelessWidget {
   StatisticView({Key? key}) : super(key: key);
@@ -27,53 +31,88 @@ class StatisticView extends StatelessWidget {
         title: Text(LocaleKeys.appBar_title_statistic.tr()),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            const Expanded(
-              child: AppTabbar(),
-            ),
-            Expanded(
-              child: Padding(
-                padding: context.paddingNormal,
-                child: _balanceAndCalendarRow(context, colors),
+        child: BlocProvider(
+          create: (context) => StatisticBloc()..getAllTransactionByIncome(),
+          child: Column(
+            children: [
+              Expanded(
+                child: BlocBuilder<StatisticBloc, StatisticState>(
+                  builder: (context, state) {
+                    return AppTabbar(
+                      changeCallBack: (int index) {
+                        context.read<StatisticBloc>().changeIncome();
+                      },
+                    );
+                  },
+                ),
               ),
-            ),
-            Expanded(
-              flex: 3,
-              child: TotalChart(),
-            ),
-            Expanded(
-              child: Row(
-                children: [
-                  _incomeTotalContainer(),
-                  _expanseTotalContainer(),
-                ],
+              Expanded(
+                child: Padding(
+                  padding: context.paddingNormal,
+                  child: _balanceAndCalendarRow(context, colors),
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                flex: 3,
+                child: BlocBuilder<StatisticBloc, StatisticState>(
+                  builder: (context, state) {
+                    if (state is StatisticLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else {
+                      return TotalChart(
+                        data: (state as StatisticSuccess).list,
+                      );
+                    }
+                  },
+                ),
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    _incomeTotalContainer(),
+                    _expanseTotalContainer(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Expanded _expanseTotalContainer() {
-    return Expanded(
-      child: TotalContainer(
-        bgColor: colors.lightRedColor,
-        icon: Icons.arrow_circle_down_outlined,
-        money: LocaleKeys.statistic_expanse.tr(),
-        title: '\$5.609',
+  Widget _expanseTotalContainer() {
+    return BlocProvider(
+      create: (context) => TotalBalanceBloc()..getTotalExpanse(),
+      child: BlocBuilder<TotalBalanceBloc, double>(
+        builder: (context, state) {
+          return Expanded(
+            child: TotalContainer(
+              bgColor: colors.lightRedColor,
+              icon: Icons.arrow_circle_down_outlined,
+              money: LocaleKeys.statistic_expanse.tr(),
+              title: '\$$state',
+            ),
+          );
+        },
       ),
     );
   }
 
-  Expanded _incomeTotalContainer() {
-    return Expanded(
-      child: TotalContainer(
-        bgColor: colors.darkBlueColor,
-        icon: Icons.arrow_circle_up_outlined,
-        money: LocaleKeys.statistic_income.tr(),
-        title: '\$5.609',
+  Widget _incomeTotalContainer() {
+    return BlocProvider<TotalBalanceBloc>(
+      create: (context) => TotalBalanceBloc()..getTotalIncome(),
+      child: Expanded(
+        child: BlocBuilder<TotalBalanceBloc, double>(
+          builder: (context, state) {
+            return TotalContainer(
+              bgColor: colors.darkBlueColor,
+              icon: Icons.arrow_circle_up_outlined,
+              money: LocaleKeys.statistic_income.tr(),
+              title: '\$$state',
+            );
+          },
+        ),
       ),
     );
   }
@@ -104,13 +143,20 @@ class StatisticView extends StatelessWidget {
     );
   }
 
-  Text _balanceText(BuildContext context, ColorConstants colors) {
-    return Text(
-      '\$687.134',
-      style: context.textTheme.headline4?.copyWith(
-        color: colors.yellowColor,
-        fontWeight: FontWeight.bold,
-        fontSize: 27,
+  Widget _balanceText(BuildContext context, ColorConstants colors) {
+    return BlocProvider(
+      create: (context) => TotalBalanceBloc()..getTotalBalance(),
+      child: BlocBuilder<TotalBalanceBloc, double>(
+        builder: (context, state) {
+          return Text(
+            '\$$state',
+            style: context.textTheme.headline4?.copyWith(
+              color: colors.yellowColor,
+              fontWeight: FontWeight.bold,
+              fontSize: 27,
+            ),
+          );
+        },
       ),
     );
   }
