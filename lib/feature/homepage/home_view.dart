@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:pockeet/core/constants/color_constants.dart';
 import 'package:pockeet/core/constants/image_constants.dart';
 import 'package:pockeet/core/init/lang/locale_keys.g.dart';
+import 'package:pockeet/feature/product/widget/home_list_tile.dart';
 import 'package:pockeet/feature/product/widget/pay_top_transfer_button.dart';
 import 'package:pockeet/feature/product/widget/payment_list_button.dart';
+import 'package:pockeet/product/models/transaction_model.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
@@ -106,7 +108,7 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    left: 60,
+                    left: MediaQuery.of(context).size.width / 6,
                     top: 130,
                     child: Container(
                       width: 260,
@@ -196,47 +198,9 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                child: Card(
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  color: colors.blackCardBackgroundColor,
-                  child: ListTile(
-                    leading: const CircleAvatar(
-                      backgroundColor: Color(0xFF7997ff),
-                      child: Center(
-                        child: Text(
-                          "D",
-                          style: TextStyle(color: Color(0xFF1f1e34)),
-                        ),
-                      ),
-                    ),
-                    title: Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Text(
-                        "Floyd Miles",
-                        style: TextStyle(
-                            color: colors.whiteColor,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    subtitle: const Text(
-                      "10 Jan 2022 / 3.06 AM",
-                      style: TextStyle(
-                          color: Color(0xFF9c9b9e),
-                          fontWeight: FontWeight.w500),
-                    ),
-                    trailing: Text(
-                      "+\$22.78",
-                      style: TextStyle(color: colors.darkBlueColor),
-                    ),
-                  ),
-                ),
-              ),
+              HomeListTile(colors: colors),
+              HomeListTile(colors: colors),
+              HomeListTile(colors: colors),
             ],
           ),
         ),
