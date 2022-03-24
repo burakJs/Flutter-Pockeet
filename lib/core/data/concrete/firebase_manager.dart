@@ -54,4 +54,9 @@ class FirebaseManager extends FirebaseService {
   Future<void> saveDataToFirestore(String collectionName, String documentName, Map<String, dynamic> model) async {
     await firestore.collection(collectionName).doc(documentName).set(model);
   }
+
+  @override
+  Future<void> saveDataToSecondFirestore(String collectionName, String documentName, String secondCollectionName, Map<String, dynamic> model) async {
+    await firestore.collection(collectionName).doc(documentName).collection(secondCollectionName).add(model);
+  }
 }

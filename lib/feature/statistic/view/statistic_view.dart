@@ -146,7 +146,11 @@ class StatisticView extends StatelessWidget {
         borderRadius: context.lowBorderRadius,
       ),
       child: IconButton(
-        onPressed: () async {},
+        onPressed: () async {
+          final TransactionModel model = TransactionModel(title: 'Samsung', money: 12.43, isIncome: false, date: DateTime.now());
+          final TransactionManager manager = TransactionManager(FirebaseManager());
+          await manager.addTransaction(model);
+        },
         icon: const Icon(Icons.calendar_today),
       ),
     );

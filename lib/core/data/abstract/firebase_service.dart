@@ -13,4 +13,5 @@ abstract class FirebaseService {
   Future<String?> registerWithEmailAndPassword(Person person);
   Future<String?> loginWithEmailAndPassword(Person person);
   Future<void> saveDataToFirestore(String collectionName, String documentName, Map<String, dynamic> model);
+  Future<void> saveDataToSecondFirestore(String collectionName, String documentName, String secondCollectionName, Map<String, dynamic> model);
 }
