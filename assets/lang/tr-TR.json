@@ -6,5 +6,19 @@
         "add":"Ekleme",
         "welcomeBack":"Tekrar Hoşgeldin!"
       }
+  },
+  "home" : {
+    "availableBalance" : "Kalan Bakiye",
+    "pay": "Cüzdan",
+    "topUp": "Top Up",
+    "transfer": "Transfer",
+    "electricity":"Elektrik",
+    "internet":"İternet",
+    "games": "Oyunlar",
+    "more": "Daha fazla",
+    "paymentList":"Ödeme Listesi",
+    "lastTransaction":"Son transferler",
+    "seeAll": "Hepsini Gör"
+
   }
 }

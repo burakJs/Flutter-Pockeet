@@ -7,6 +7,19 @@
         "welcomeBack":"Welcome Back!"
       }
   },
+  "home":{
+    "availableBalance":"Available Balance",
+    "pay": "Pay",
+    "topUp": "Top Up",
+    "transfer": "Transfer",
+    "electricity":"Electricity",
+    "internet":"Internet",
+    "games": "Games",
+    "more": "More",
+    "paymentList":"Payment List",
+    "lastTransaction":"Last Transaction",
+    "seeAll": "See All"
+  },
   "statistic": {
     "totalBalance":"Total Balance",
     "income":"Income",
