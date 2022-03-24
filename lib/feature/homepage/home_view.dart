@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pockeet/core/constants/color_constants.dart';
+import '../../core/constants/color_constants.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
@@ -39,21 +39,16 @@ class HomeView extends StatelessWidget {
                         ),
                         Text(
                           "Devon Albex",
-                          style: TextStyle(
-                              color: colors.whiteColor,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500),
+                          style: TextStyle(color: colors.whiteColor, fontSize: 20, fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
                     Container(
                       width: 40,
                       height: 40,
-                      child:
-                          Center(child: Image.asset("assets/icons/Bell.png")),
+                      child: Center(child: Image.asset("assets/icons/Bell.png")),
                       decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
+                        borderRadius: const BorderRadius.all(Radius.circular(10)),
                         color: colors.blackCardBackgroundColor,
                       ),
                     ),
@@ -69,9 +64,7 @@ class HomeView extends StatelessWidget {
                   Container(
                     width: double.infinity,
                     height: 200,
-                    decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage("assets/icons/Card.png"))),
+                    decoration: const BoxDecoration(image: DecorationImage(image: AssetImage("assets/icons/Card.png"))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -80,18 +73,13 @@ class HomeView extends StatelessWidget {
                             children: [
                               Text(
                                 "Available Balance",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: colors.whiteColor),
+                                style: TextStyle(fontWeight: FontWeight.w500, color: colors.whiteColor),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(bottom: 40, top: 5),
                                 child: Text(
                                   "\$687.134",
-                                  style: TextStyle(
-                                      fontSize: 32,
-                                      color: colors.yellowColor,
-                                      fontWeight: FontWeight.w500),
+                                  style: TextStyle(fontSize: 32, color: colors.yellowColor, fontWeight: FontWeight.w500),
                                 ),
                               ),
                             ],
@@ -106,24 +94,15 @@ class HomeView extends StatelessWidget {
                     child: Container(
                       width: 260,
                       height: 120,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          color: colors.blackCardBackgroundColor),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(10)), color: colors.blackCardBackgroundColor),
                       child: Padding(
                         padding: const EdgeInsets.only(top: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            HomeButton(
-                                title: "Pay",
-                                image: Image.asset("assets/icons/Wallet.png")),
-                            HomeButton(
-                                title: "Top Up",
-                                image: Image.asset("assets/icons/Upload.png")),
-                            HomeButton(
-                                title: "Transfer",
-                                image: Image.asset(
-                                    "assets/icons/ArrowsLeftRight.png")),
+                            HomeButton(title: "Pay", image: Image.asset("assets/icons/Wallet.png")),
+                            HomeButton(title: "Top Up", image: Image.asset("assets/icons/Upload.png")),
+                            HomeButton(title: "Transfer", image: Image.asset("assets/icons/ArrowsLeftRight.png")),
                           ],
                         ),
                       ),
@@ -138,10 +117,7 @@ class HomeView extends StatelessWidget {
                   children: [
                     Text(
                       "Payment List",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: colors.whiteColor),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: colors.whiteColor),
                     ),
                   ],
                 ),
@@ -152,18 +128,10 @@ class HomeView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  PaymentListButton(
-                      colors: colors,
-                      imageName: "Lightning",
-                      title: "Electricity"),
-                  PaymentListButton(
-                      colors: colors, imageName: "WifiHigh", title: "Internet"),
-                  PaymentListButton(
-                      colors: colors,
-                      imageName: "GameController",
-                      title: "Games"),
-                  PaymentListButton(
-                      colors: colors, imageName: "CirclesFour", title: "More"),
+                  PaymentListButton(colors: colors, imageName: "Lightning", title: "Electricity"),
+                  PaymentListButton(colors: colors, imageName: "WifiHigh", title: "Internet"),
+                  PaymentListButton(colors: colors, imageName: "GameController", title: "Games"),
+                  PaymentListButton(colors: colors, imageName: "CirclesFour", title: "More"),
                 ],
               ),
               const SizedBox(height: 20),
@@ -174,16 +142,12 @@ class HomeView extends StatelessWidget {
                   children: [
                     Text(
                       "Last Transaction",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: colors.whiteColor),
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: colors.whiteColor),
                     ),
                     const Spacer(),
                     Text(
                       "See all",
-                      style: TextStyle(
-                          fontSize: 18, color: colors.primaryPurpleColor),
+                      style: TextStyle(fontSize: 18, color: colors.primaryPurpleColor),
                     ),
                   ],
                 ),
@@ -194,8 +158,7 @@ class HomeView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Card(
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
+                  shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
                   color: ColorConstants.instance.blackCardBackgroundColor,
                   child: ListTile(
                     leading: const CircleAvatar(
@@ -211,16 +174,12 @@ class HomeView extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 8.0),
                       child: Text(
                         "Floyd Miles",
-                        style: TextStyle(
-                            color: colors.whiteColor,
-                            fontWeight: FontWeight.w600),
+                        style: TextStyle(color: colors.whiteColor, fontWeight: FontWeight.w600),
                       ),
                     ),
                     subtitle: const Text(
                       "10 Jan 2022 / 3.06 AM",
-                      style: TextStyle(
-                          color: Color(0xFF9c9b9e),
-                          fontWeight: FontWeight.w500),
+                      style: TextStyle(color: Color(0xFF9c9b9e), fontWeight: FontWeight.w500),
                     ),
                     trailing: const Text(
                       "+\$22.78",
@@ -260,16 +219,11 @@ class PaymentListButton extends StatelessWidget {
           child: Center(child: Image.asset("assets/icons/$imageName.png")),
           width: 50,
           height: 50,
-          decoration: BoxDecoration(
-              color: colors.blackCardBackgroundColor,
-              borderRadius: const BorderRadius.all(Radius.circular(10))),
+          decoration: BoxDecoration(color: colors.blackCardBackgroundColor, borderRadius: const BorderRadius.all(Radius.circular(10))),
         ),
         Text(
           title,
-          style: TextStyle(
-              fontSize: 14,
-              color: colors.whiteColor,
-              fontWeight: FontWeight.w400),
+          style: TextStyle(fontSize: 14, color: colors.whiteColor, fontWeight: FontWeight.w400),
         ),
       ],
     );
@@ -295,9 +249,7 @@ class HomeButton extends StatelessWidget {
           child: Center(
             child: image,
           ),
-          decoration: BoxDecoration(
-              color: ColorConstants.instance.primaryPurpleColor,
-              borderRadius: const BorderRadius.all(Radius.circular(8))),
+          decoration: BoxDecoration(color: ColorConstants.instance.primaryPurpleColor, borderRadius: const BorderRadius.all(Radius.circular(8))),
         ),
         const SizedBox(
           height: 12,

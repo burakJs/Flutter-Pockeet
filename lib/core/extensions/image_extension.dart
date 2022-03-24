@@ -1,4 +1,4 @@
-import 'package:pockeet/core/constants/app_constants.dart';
+import '../constants/app_constants.dart';
 
 extension ImageExtension on String {
   String get toPng => '$this.png';

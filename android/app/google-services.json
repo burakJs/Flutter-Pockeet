@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "805673484494",
+    "project_id": "pockeet-2f510",
+    "storage_bucket": "pockeet-2f510.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805673484494:android:efd4d17bcd6534a4c1109f",
+        "android_client_info": {
+          "package_name": "com.example.pockeet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805673484494-o26t6qlmkdi55ckf6sg8dreoho3irt4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMtgYsgrHwL8BVThU50kjVbXtNwJ4UkR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805673484494-o26t6qlmkdi55ckf6sg8dreoho3irt4f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "805673484494-t5p852fuva2retglgvsa3a4pcn525pha.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pockeet"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

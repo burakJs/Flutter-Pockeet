@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pockeet/core/theme/color/dark_color_theme.dart';
+import 'color/dark_color_theme.dart';
 import 'color/color_theme.dart';
 
 abstract class ITheme {
