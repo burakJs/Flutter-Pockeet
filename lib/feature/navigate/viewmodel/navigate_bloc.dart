@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:pockeet/feature/addtransction/addtransaction_view.dart';
+import '../../addtransction/addtransaction_view.dart';
 import '../../homepage/home_view.dart';
 import '../../statistic/view/statistic_view.dart';
 import '../../transaction/view/transaction_view.dart';

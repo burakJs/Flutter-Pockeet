@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pockeet/core/constants/color_constants.dart';
+import '../../core/constants/color_constants.dart';
 
 class PaymentListButton extends StatelessWidget {
   const PaymentListButton({
@@ -22,16 +22,11 @@ class PaymentListButton extends StatelessWidget {
           child: Center(child: Image.asset(imageName)),
           width: 50,
           height: 50,
-          decoration: BoxDecoration(
-              color: colors.blackCardBackgroundColor,
-              borderRadius: const BorderRadius.all(Radius.circular(10))),
+          decoration: BoxDecoration(color: colors.blackCardBackgroundColor, borderRadius: const BorderRadius.all(Radius.circular(10))),
         ),
         Text(
           title,
-          style: TextStyle(
-              fontSize: 14,
-              color: colors.whiteColor,
-              fontWeight: FontWeight.w400),
+          style: TextStyle(fontSize: 14, color: colors.whiteColor, fontWeight: FontWeight.w400),
         ),
       ],
     );

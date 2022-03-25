@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:pockeet/core/data/abstract/firebase_service.dart';
-import 'package:pockeet/product/enum/firebase_enum.dart';
-import 'package:pockeet/product/models/transaction_model.dart';
-import 'package:pockeet/product/models/user_model.dart';
+import '../../core/data/abstract/firebase_service.dart';
+import '../enum/firebase_enum.dart';
+import '../models/transaction_model.dart';
+import '../models/user_model.dart';
 
 class TransactionManager {
   final FirebaseService service;

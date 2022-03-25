@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:pockeet/core/constants/navigation_constants.dart';
-import 'package:pockeet/feature/signin-signup/signin_view.dart';
+import '../../core/constants/navigation_constants.dart';
+import 'signin_view.dart';
 import '../../core/data/concrete/firebase_manager.dart';
 import '../../core/init/navigation/concrete/navigation_manager.dart';
 import '../../product/data/transaction_manager.dart';

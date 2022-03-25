@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:pockeet/core/constants/color_constants.dart';
+import '../../core/constants/color_constants.dart';
 
 class HomeButton extends StatelessWidget {
   final String title;
@@ -20,9 +20,7 @@ class HomeButton extends StatelessWidget {
           child: Center(
             child: image,
           ),
-          decoration: BoxDecoration(
-              color: ColorConstants.instance.primaryPurpleColor,
-              borderRadius: const BorderRadius.all(Radius.circular(8))),
+          decoration: BoxDecoration(color: ColorConstants.instance.primaryPurpleColor, borderRadius: const BorderRadius.all(Radius.circular(8))),
         ),
         const SizedBox(
           height: 12,

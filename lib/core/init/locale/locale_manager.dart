@@ -1,5 +1,6 @@
-import 'package:pockeet/core/enum/locale_enum.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../enum/locale_enum.dart';
 
 class LocaleManager {
   static LocaleManager? _instance;

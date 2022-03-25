@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:pockeet/core/constants/color_constants.dart';
-import 'package:pockeet/core/data/concrete/firebase_manager.dart';
-import 'package:pockeet/product/data/transaction_manager.dart';
-import 'package:pockeet/product/models/transaction_model.dart';
-import 'package:pockeet/product/models/user_model.dart';
+import '../../core/constants/color_constants.dart';
+import '../../core/data/concrete/firebase_manager.dart';
+import '../../product/data/transaction_manager.dart';
+import '../../product/models/transaction_model.dart';
+import '../../product/models/user_model.dart';
 
 import '../../product/util/page_border_radius.dart';
 import '../../product/widget/transaction_form.dart';

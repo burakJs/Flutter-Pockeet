@@ -1,6 +1,3 @@
-// To parse this JSON data, do
-//
-//     final deneme = denemeFromJson(jsonString);
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TransactionModel {

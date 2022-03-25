@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:pockeet/core/constants/navigation_constants.dart';
-import 'package:pockeet/core/data/concrete/firebase_manager.dart';
-import 'package:pockeet/core/init/locale/locale_manager.dart';
-import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
+import '../../../core/constants/navigation_constants.dart';
+import '../../../core/data/concrete/firebase_manager.dart';
+import '../../../core/init/locale/locale_manager.dart';
+import '../../../core/init/navigation/concrete/navigation_manager.dart';
 import '../../../core/constants/color_constants.dart';
 import '../../../product/widget/custom_button.dart';
 

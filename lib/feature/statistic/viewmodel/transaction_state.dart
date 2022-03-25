@@ -1,4 +1,4 @@
-import 'package:pockeet/product/models/transaction_model.dart';
+import '../../../product/models/transaction_model.dart';
 
 abstract class StatisticState {
   StatisticState();

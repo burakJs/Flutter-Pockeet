@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pockeet/core/theme/color/color_theme.dart';
+import '../../core/theme/color/color_theme.dart';
 
 import '../../core/constants/color_constants.dart';
 
@@ -10,7 +10,6 @@ class CustomMailField extends StatefulWidget {
   final FocusNode focusNode;
   final double? bottomRadius;
   final double? topRadius;
-
 
   CustomMailField({
     Key? key,

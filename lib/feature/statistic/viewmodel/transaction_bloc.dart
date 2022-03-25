@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:pockeet/core/data/concrete/firebase_manager.dart';
-import 'package:pockeet/feature/statistic/viewmodel/transaction_state.dart';
-import 'package:pockeet/product/data/transaction_manager.dart';
-import 'package:pockeet/product/models/transaction_model.dart';
+import '../../../core/data/concrete/firebase_manager.dart';
+import 'transaction_state.dart';
+import '../../../product/data/transaction_manager.dart';
+import '../../../product/models/transaction_model.dart';
 
 class StatisticBloc extends Cubit<StatisticState> {
   final TransactionManager _manager;

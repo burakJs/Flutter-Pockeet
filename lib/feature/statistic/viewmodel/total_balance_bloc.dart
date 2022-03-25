@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:pockeet/core/data/concrete/firebase_manager.dart';
-import 'package:pockeet/product/data/transaction_manager.dart';
-import 'package:pockeet/product/models/transaction_model.dart';
+import '../../../core/data/concrete/firebase_manager.dart';
+import '../../../product/data/transaction_manager.dart';
+import '../../../product/models/transaction_model.dart';
 
 class TotalBalanceBloc extends Cubit<double> {
   final TransactionManager _manager;

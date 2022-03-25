@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:pockeet/core/constants/navigation_constants.dart';
-import 'package:pockeet/core/data/concrete/firebase_manager.dart';
-import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
-import 'package:pockeet/feature/signin-signup/signup_view.dart';
-import 'package:pockeet/product/models/user_model.dart';
+import '../../core/constants/navigation_constants.dart';
+import '../../core/data/concrete/firebase_manager.dart';
+import '../../core/init/navigation/concrete/navigation_manager.dart';
+import 'signup_view.dart';
+import '../../product/models/user_model.dart';
 import '../../product/widget/custom_mail_text_form_field.dart';
 import '../../product/widget/custom_pass_text_form_field.dart';
 import '../../../core/constants/color_constants.dart';

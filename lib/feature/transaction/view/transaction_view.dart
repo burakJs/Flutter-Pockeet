@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
-import 'package:pockeet/core/data/concrete/firebase_manager.dart';
-import 'package:pockeet/core/init/lang/locale_keys.g.dart';
-import 'package:pockeet/product/data/transaction_manager.dart';
+import '../../../core/data/concrete/firebase_manager.dart';
+import '../../../core/init/lang/locale_keys.g.dart';
+import '../../../product/data/transaction_manager.dart';
 import '../../../core/constants/color_constants.dart';
 import '../../../product/models/transaction_model.dart';
 import '../../../product/tabbar/transaction_tabbar.dart';
@@ -76,9 +76,7 @@ class _TransactionViewState extends State<TransactionView> {
       backgroundColor: colors.primaryPurpleColor,
       appBar: _transactionAppbar(),
       body: Container(
-        decoration: BoxDecoration(
-            color: colors.backgroundColor,
-            borderRadius: PageBorderRadius.topSide()),
+        decoration: BoxDecoration(color: colors.backgroundColor, borderRadius: PageBorderRadius.topSide()),
         child: Column(
           children: [
             SizedBox(
@@ -115,9 +113,7 @@ class _TransactionViewState extends State<TransactionView> {
 
   Container _tabbar(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          borderRadius: context.normalBorderRadius,
-          color: colors.blackCardBackgroundColor),
+      decoration: BoxDecoration(borderRadius: context.normalBorderRadius, color: colors.blackCardBackgroundColor),
       child: TransactionTabbar(
         callBack: (int index) async {
           transactionMethod(index);

@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pockeet/feature/signin-signup/signin_view.dart';
+import 'feature/signin-signup/signin_view.dart';
 import 'core/constants/navigation_constants.dart';
 import 'core/data/concrete/firebase_manager.dart';
 import 'core/init/locale/locale_manager.dart';

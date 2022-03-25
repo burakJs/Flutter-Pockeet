@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:pockeet/product/models/user_model.dart';
+import '../../../product/models/user_model.dart';
 
 import '../abstract/firebase_service.dart';
 

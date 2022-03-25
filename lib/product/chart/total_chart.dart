@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pockeet/product/models/transaction_model.dart';
+import '../models/transaction_model.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../core/constants/color_constants.dart';

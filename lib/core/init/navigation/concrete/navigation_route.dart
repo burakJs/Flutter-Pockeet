@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pockeet/feature/navigate/view/navigate_view.dart';
-import 'package:pockeet/feature/signin-signup/signin_view.dart';
-import 'package:pockeet/feature/signin-signup/signup_view.dart';
+import '../../../../feature/navigate/view/navigate_view.dart';
+import '../../../../feature/signin-signup/signin_view.dart';
+import '../../../../feature/signin-signup/signup_view.dart';
 
 import '../../../constants/navigation_constants.dart';
 

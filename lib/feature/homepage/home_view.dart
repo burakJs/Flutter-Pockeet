@@ -1,16 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:pockeet/core/constants/color_constants.dart';
-import 'package:pockeet/core/constants/image_constants.dart';
-import 'package:pockeet/core/constants/navigation_constants.dart';
-import 'package:pockeet/core/data/concrete/firebase_manager.dart';
-import 'package:pockeet/core/init/lang/locale_keys.g.dart';
-import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
-import 'package:pockeet/feature/product/widget/pay_top_transfer_button.dart';
-import 'package:pockeet/feature/product/widget/payment_list_button.dart';
-import 'package:pockeet/product/data/transaction_manager.dart';
-import 'package:pockeet/product/models/transaction_model.dart';
-import 'package:pockeet/product/models/user_model.dart';
+import '../../core/constants/color_constants.dart';
+import '../../core/constants/image_constants.dart';
+import '../../core/constants/navigation_constants.dart';
+import '../../core/data/concrete/firebase_manager.dart';
+import '../../core/init/lang/locale_keys.g.dart';
+import '../../core/init/navigation/concrete/navigation_manager.dart';
+import '../product/widget/pay_top_transfer_button.dart';
+import '../product/widget/payment_list_button.dart';
+import '../../product/data/transaction_manager.dart';
+import '../../product/models/transaction_model.dart';
+import '../../product/models/user_model.dart';
 
 import '../../product/widget/custom_list_tile.dart';
 
