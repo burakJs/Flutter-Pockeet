@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:pockeet/core/constants/navigation_constants.dart';
+import 'package:pockeet/core/data/concrete/firebase_manager.dart';
+import 'package:pockeet/core/init/locale/locale_manager.dart';
+import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
 import '../../../core/constants/color_constants.dart';
 import '../../../product/widget/custom_button.dart';
 
@@ -50,7 +54,17 @@ class _OnboardViewState extends State<OnboardView> {
                 _titleText(i, context),
                 _descriptionText(i, context),
                 BuildDot(currentIndex: currentIndex),
-                CustomButton(title: 'Get Started', color: colors.pinkColor, ontap: () {})
+                CustomButton(
+                    title: 'Get Started',
+                    color: colors.pinkColor,
+                    ontap: () async {
+                      if (currentIndex == contents.length - 1) {
+                        final bool result = await LocaleManager.instance.setFirstLogin(false);
+                        NavigationManager.instance.navigateToPageClear(NavigationConstants.LOGIN_PAGE);
+                      } else {
+                        _controller?.nextPage(duration: const Duration(milliseconds: 100), curve: Curves.bounceIn);
+                      }
+                    })
               ]),
             ),
           ]);
