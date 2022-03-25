@@ -12,32 +12,35 @@ class NavigateView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: FluidNavBar(
-        defaultIndex: 0,
-        onChange: (int val) => context.read<NavigateBloc>().changePage(val),
-        style: FluidNavBarStyle(
-          iconSelectedForegroundColor: _colors.primaryPurpleColor,
-          barBackgroundColor: _colors.backgroundColor,
-        ),
-        icons: [
-          FluidNavBarIcon(
-            icon: Icons.home,
-          ),
-          FluidNavBarIcon(
-            icon: Icons.document_scanner,
-          ),
-          FluidNavBarIcon(
-            icon: Icons.add,
-          ),
-          FluidNavBarIcon(
-            icon: Icons.graphic_eq,
-          ),
-        ],
-      ),
-      body: BlocBuilder<NavigateBloc, int>(
-        builder: (context, state) {
-          return context.read<NavigateBloc>().pages[state];
+    return BlocProvider(
+      create: (context) => NavigateBloc(),
+      child: BlocBuilder<NavigateBloc, int>(
+        builder: (contextBloc, state) {
+          return Scaffold(
+            bottomNavigationBar: FluidNavBar(
+              defaultIndex: 0,
+              onChange: (int val) => contextBloc.read<NavigateBloc>().changePage(val),
+              style: FluidNavBarStyle(
+                iconSelectedForegroundColor: _colors.primaryPurpleColor,
+                barBackgroundColor: _colors.backgroundColor,
+              ),
+              icons: [
+                FluidNavBarIcon(
+                  icon: Icons.home,
+                ),
+                FluidNavBarIcon(
+                  icon: Icons.document_scanner,
+                ),
+                FluidNavBarIcon(
+                  icon: Icons.add,
+                ),
+                FluidNavBarIcon(
+                  icon: Icons.graphic_eq,
+                ),
+              ],
+            ),
+            body: contextBloc.read<NavigateBloc>().pages[state],
+          );
         },
       ),
     );

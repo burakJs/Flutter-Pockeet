@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:pockeet/core/constants/navigation_constants.dart';
+import 'package:pockeet/core/data/concrete/firebase_manager.dart';
+import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
 import 'package:pockeet/feature/signin-signup/signup_view.dart';
+import 'package:pockeet/product/models/user_model.dart';
 import '../../product/widget/custom_mail_text_form_field.dart';
 import '../../product/widget/custom_pass_text_form_field.dart';
 import '../../../core/constants/color_constants.dart';
@@ -25,15 +29,13 @@ class _LoginViewState extends State<LoginView> {
   final _usernameText = "E-mail";
   final _passwordText = "Password";
   ColorConstants colors = ColorConstants.instance;
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  NavigationManager navManager = NavigationManager.instance;
+  final FirebaseManager manager = FirebaseManager();
 
-  late String email, password;
-  Future<void> _signIn({required String em, required String pw}) async {
-    _auth
-        .signInWithEmailAndPassword(email: em, password: pw)
-        .then((authResult) {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => OnboardView()));
+  Future<void> _signIn() async {
+    Person p = Person(email: _mailController.text, password: _passwordController.text);
+    manager.loginWithEmailAndPassword(p).then((authResult) {
+      navManager.navigateToPageClear(NavigationConstants.HOME_PAGE);
     }).catchError((err) {});
   }
 
@@ -43,10 +45,7 @@ class _LoginViewState extends State<LoginView> {
       key: _formKey,
       child: Container(
         decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Colors.black, Color.fromARGB(255, 16, 13, 39)])),
+            gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [Colors.black, Color.fromARGB(255, 16, 13, 39)])),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: SafeArea(
@@ -62,10 +61,7 @@ class _LoginViewState extends State<LoginView> {
                     SizedBox(height: context.mediumValue),
                     const Text(
                       "Pockeet",
-                      style: TextStyle(
-                          fontSize: 50.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                      style: TextStyle(fontSize: 50.0, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
                     const Text(
                       "Welcome back you've been missed!",
@@ -73,11 +69,6 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     SizedBox(height: context.mediumValue),
                     TextFormField(
-                      onChanged: (textVal) {
-                        setState(() {
-                          email = textVal;
-                        });
-                      },
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       controller: _mailController,
                       obscureText: false,
@@ -92,30 +83,22 @@ class _LoginViewState extends State<LoginView> {
                             topLeft: Radius.circular(context.normalValue),
                             topRight: Radius.circular(context.normalValue),
                           ),
-                          borderSide: BorderSide(
-                              color: Colors.grey.withOpacity(0.7), width: 2.0),
+                          borderSide: BorderSide(color: Colors.grey.withOpacity(0.7), width: 2.0),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(context.normalValue),
                             topRight: Radius.circular(context.normalValue),
                           ),
-                          borderSide: BorderSide(
-                              color: Colors.grey.withOpacity(0.7), width: 2.0),
+                          borderSide: BorderSide(color: Colors.grey.withOpacity(0.7), width: 2.0),
                         ),
                         labelText: "E-mail",
                         labelStyle: TextStyle(color: Colors.grey),
-                        prefixIcon: const Icon(Icons.perm_identity,
-                            color: Colors.white),
+                        prefixIcon: const Icon(Icons.perm_identity, color: Colors.white),
                       ),
                     ),
                     TextFormField(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      onChanged: (textVal) {
-                        setState(() {
-                          password = textVal;
-                        });
-                      },
                       controller: _passwordController,
                       obscureText: true,
                       focusNode: _passwordFocusNode,
@@ -129,16 +112,14 @@ class _LoginViewState extends State<LoginView> {
                             bottomLeft: Radius.circular(context.normalValue),
                             bottomRight: Radius.circular(context.normalValue),
                           ),
-                          borderSide: BorderSide(
-                              color: Colors.grey.withOpacity(0.8), width: 2.0),
+                          borderSide: BorderSide(color: Colors.grey.withOpacity(0.8), width: 2.0),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(context.normalValue),
                             bottomRight: Radius.circular(context.normalValue),
                           ),
-                          borderSide: BorderSide(
-                              color: Colors.grey.withOpacity(0.8), width: 2.0),
+                          borderSide: BorderSide(color: Colors.grey.withOpacity(0.8), width: 2.0),
                         ),
                         labelText: "Password",
                         labelStyle: TextStyle(color: Colors.grey),
@@ -149,9 +130,7 @@ class _LoginViewState extends State<LoginView> {
                         suffixIcon: IconButton(
                           onPressed: () {
                             setState(() {
-                              _controlSecure
-                                  ? _controlSecure = false
-                                  : _controlSecure = true;
+                              _controlSecure ? _controlSecure = false : _controlSecure = true;
                             });
                           },
                           icon: const Icon(Icons.remove_red_eye_outlined),
@@ -187,7 +166,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                       child: ElevatedButton(
                         onPressed: () {
-                          _signIn(em: email, pw: password);
+                          _signIn();
                         },
                         child: const Text(
                           'Log In',
@@ -197,8 +176,7 @@ class _LoginViewState extends State<LoginView> {
                           ),
                         ),
                         style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.0),
                             ),
@@ -209,17 +187,11 @@ class _LoginViewState extends State<LoginView> {
                     SizedBox(height: context.mediumValue),
                     InkWell(
                       onTap: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignupView()));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupView()));
                       },
                       child: const Text(
                         "Sign Up",
-                        style: TextStyle(
-                            fontSize: 17.0,
-                            color: Colors.grey,
-                            decoration: TextDecoration.underline),
+                        style: TextStyle(fontSize: 17.0, color: Colors.grey, decoration: TextDecoration.underline),
                       ),
                     ),
                   ],

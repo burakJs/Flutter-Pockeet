@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pockeet/feature/signin-signup/signin_view.dart';
+import 'core/constants/navigation_constants.dart';
+import 'core/data/concrete/firebase_manager.dart';
 import 'core/init/locale/locale_manager.dart';
 import 'core/init/navigation/concrete/navigation_manager.dart';
 import 'core/init/navigation/concrete/navigation_route.dart';
@@ -32,6 +34,9 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
   final bool isFirst = LocaleManager.instance.isFirstLogin();
+  NavigationManager navManager = NavigationManager.instance;
+  final FirebaseManager manager = FirebaseManager();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -42,10 +47,11 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       theme: ThemeManager.createTheme(AppDarkTheme()),
-      home: BlocProvider(
-        create: (context) => NavigateBloc(),
-        child: isFirst ? const OnboardView() : LoginView(),
-      ),
+      home: isFirst
+          ? const OnboardView()
+          : manager.auth.currentUser != null
+              ? NavigateView()
+              : LoginView(),
     );
   }
 }
