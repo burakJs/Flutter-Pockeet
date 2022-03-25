@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pockeet/feature/signin-signup/signin_view.dart';
+import 'core/init/locale/locale_manager.dart';
 import 'core/init/navigation/concrete/navigation_manager.dart';
 import 'core/init/navigation/concrete/navigation_route.dart';
 import 'feature/navigate/view/navigate_view.dart';
@@ -15,22 +17,21 @@ import 'feature/onboard/view/onboard_view.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await LocaleManager.preferencesInit();
   await Firebase.initializeApp();
   runApp(
     EasyLocalization(
-        child: MyApp(),
-        supportedLocales: [
-          LanguageManager.instance.enLocale,
-          LanguageManager.instance.trLocale
-        ],
-        path: AppConstants.langAssetsPath,
-        startLocale: LanguageManager.instance.enLocale),
+      child: MyApp(),
+      supportedLocales: [LanguageManager.instance.enLocale, LanguageManager.instance.trLocale],
+      path: AppConstants.langAssetsPath,
+      startLocale: LanguageManager.instance.enLocale,
+    ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  MyApp({Key? key}) : super(key: key);
+  final bool isFirst = LocaleManager.instance.isFirstLogin();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeManager.createTheme(AppDarkTheme()),
       home: BlocProvider(
         create: (context) => NavigateBloc(),
-        child: NavigateView(),
+        child: isFirst ? const OnboardView() : LoginView(),
       ),
     );
   }
