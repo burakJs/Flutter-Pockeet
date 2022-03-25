@@ -50,22 +50,22 @@ class _OnboardViewState extends State<OnboardView> {
             _onboardPicture(i),
             Expanded(
               flex: 4,
-              child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                _titleText(i, context),
-                _descriptionText(i, context),
-                BuildDot(currentIndex: currentIndex),
-                CustomButton(
-                    title: 'Get Started',
-                    color: colors.pinkColor,
-                    ontap: () async {
-                      if (currentIndex == contents.length - 1) {
-                        final bool result = await LocaleManager.instance.setFirstLogin(false);
-                        NavigationManager.instance.navigateToPageClear(NavigationConstants.LOGIN_PAGE);
-                      } else {
-                        _controller?.nextPage(duration: const Duration(milliseconds: 100), curve: Curves.bounceIn);
-                      }
-                    })
-              ]),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _titleText(i, context),
+                    _descriptionText(i, context),
+                    BuildDot(currentIndex: currentIndex),
+                    CustomButton(
+                        title: 'Get Started',
+                        color: colors.pinkColor,
+                        ontap: () async {
+                          final bool result =
+                              await LocaleManager.instance.setFirstLogin(false);
+                          NavigationManager.instance.navigateToPageClear(
+                              NavigationConstants.LOGIN_PAGE);
+                        })
+                  ]),
             ),
           ]);
         },
