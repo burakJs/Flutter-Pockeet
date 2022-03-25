@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pockeet/core/constants/color_constants.dart';
 import 'package:pockeet/core/constants/image_constants.dart';
+import 'package:pockeet/core/constants/navigation_constants.dart';
 import 'package:pockeet/core/data/concrete/firebase_manager.dart';
 import 'package:pockeet/core/init/lang/locale_keys.g.dart';
+import 'package:pockeet/core/init/navigation/concrete/navigation_manager.dart';
 import 'package:pockeet/feature/product/widget/pay_top_transfer_button.dart';
 import 'package:pockeet/feature/product/widget/payment_list_button.dart';
 import 'package:pockeet/product/data/transaction_manager.dart';
@@ -23,6 +25,7 @@ class _HomeViewState extends State<HomeView> {
   final ColorConstants colors = ColorConstants.instance;
   final ImageConstants images = ImageConstants.instance;
   final TransactionManager manager = TransactionManager(FirebaseManager());
+  final NavigationManager navigationManager = NavigationManager.instance;
   String name = '';
   double total = 0;
   List<TransactionModel> list = [];
@@ -40,6 +43,11 @@ class _HomeViewState extends State<HomeView> {
     setState(() {
       isLoading = !isLoading;
     });
+  }
+
+  Future<void> logOut() async {
+    await manager.logout();
+    navigationManager.navigateToPageClear(NavigationConstants.LOGIN_PAGE);
   }
 
   @override
@@ -89,13 +97,16 @@ class _HomeViewState extends State<HomeView> {
                             ),
                     ],
                   ),
-                  Container(
-                    width: 40,
-                    height: 40,
-                    child: Center(child: Image.asset(images.bell)),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      color: colors.blackCardBackgroundColor,
+                  GestureDetector(
+                    onTap: () => logOut(),
+                    child: Container(
+                      width: 40,
+                      height: 40,
+                      child: const Center(child: Icon(Icons.logout)),
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(Radius.circular(10)),
+                        color: colors.blackCardBackgroundColor,
+                      ),
                     ),
                   ),
                 ],
@@ -124,7 +135,7 @@ class _HomeViewState extends State<HomeView> {
                             Padding(
                               padding: EdgeInsets.only(bottom: 40, top: 5),
                               child: Text(
-                                "\$687.134",
+                                '\$$total',
                                 style: TextStyle(fontSize: 32, color: colors.yellowColor, fontWeight: FontWeight.w500),
                               ),
                             ),

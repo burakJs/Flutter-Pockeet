@@ -187,7 +187,7 @@ class _LoginViewState extends State<LoginView> {
                     SizedBox(height: context.mediumValue),
                     InkWell(
                       onTap: () {
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupView()));
+                        navManager.navigateToPageClear(NavigationConstants.SIGNUP_PAGE);
                       },
                       child: const Text(
                         "Sign Up",

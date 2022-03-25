@@ -39,7 +39,7 @@ class TransactionManager {
       TransactionModel newModel = TransactionModel.fromJson(doc.data());
       modelList.add(newModel);
     }
-
+    modelList.sort((a, b) => (b.date ?? Timestamp.now()).compareTo(a.date ?? Timestamp.now()));
     return modelList;
   }
 
@@ -49,7 +49,7 @@ class TransactionManager {
     if (service.auth.currentUser != null) {
       service.saveDataToFirestore(FirebaseEnum.users.name, service.auth.currentUser!.uid, {
         'username': person.email.split('@')[0],
-        'totalMoney': 0,
+        'money': 0.0,
       });
     } else {
       print('CURRENT USER NULL');
@@ -61,6 +61,10 @@ class TransactionManager {
     if (result != null) {
       print(result);
     }
+  }
+
+  Future<void> logout() async {
+    await service.auth.signOut();
   }
 
   Future<double> getTotalMoney() async {
@@ -103,7 +107,7 @@ class TransactionManager {
 
   Future<void> setTotalMoney(double money) async {
     if (service.auth.currentUser != null) {
-      await service.saveDataToFirestore(FirebaseEnum.users.name, service.auth.currentUser!.uid, {
+      await service.updateDataToFirestore(FirebaseEnum.users.name, service.auth.currentUser!.uid, {
         'money': money,
       });
     }
