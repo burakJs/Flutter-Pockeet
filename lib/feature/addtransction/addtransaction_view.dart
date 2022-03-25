@@ -132,7 +132,7 @@ class _AddTransactionState extends State<AddTransaction> {
             LabledTextFormField(
               focusNode: _massageNode,
               codeController: _messageController,
-              labelText: 'Explantion',
+              labelText: 'Title',
               textInputType: TextInputType.text,
             ),
             LabledTextFormField(
@@ -156,7 +156,7 @@ class _AddTransactionState extends State<AddTransaction> {
                   await addTransaction();
                 }
               },
-              child: Text('Sent',
+              child: Text('Add',
                   style: TextStyle(
                     fontSize: MediaQuery.of(context).size.width * 0.045,
                     color: colors.whiteColor,
