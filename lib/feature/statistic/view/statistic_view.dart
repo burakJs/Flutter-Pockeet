@@ -156,7 +156,7 @@ class StatisticView extends StatelessWidget {
       child: BlocBuilder<TotalBalanceBloc, double>(
         builder: (context, state) {
           return Text(
-            '\$$state',
+            '\$${state.toStringAsFixed(2)}',
             style: context.textTheme.headline4?.copyWith(
               color: colors.yellowColor,
               fontWeight: FontWeight.bold,
