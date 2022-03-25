@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pockeet/feature/navigate/view/navigate_view.dart';
+import 'package:pockeet/feature/signin-signup/signin_view.dart';
+import 'package:pockeet/feature/signin-signup/signup_view.dart';
 
 import '../../../constants/navigation_constants.dart';
 
@@ -10,7 +13,11 @@ class NavigationRoute {
   Route<dynamic> generateRoute(RouteSettings args) {
     switch (args.name) {
       case NavigationConstants.HOME_PAGE:
-        return normalNavigate(const Scaffold());
+        return normalNavigate(NavigateView());
+      case NavigationConstants.LOGIN_PAGE:
+        return normalNavigate(LoginView());
+      case NavigationConstants.SIGNUP_PAGE:
+        return normalNavigate(SignupView());
       default:
         return normalNavigate(const Scaffold());
     }

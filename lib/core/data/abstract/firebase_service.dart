@@ -16,4 +16,6 @@ abstract class FirebaseService {
   Future<void> saveDataToSecondFirestore(String collectionName, String documentName, String secondCollectionName, Map<String, dynamic> model);
   Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> getDataFromFirebaseByValue<T>(
       String collectionName, String documentName, String secondCollectionName, String property, T value);
+
+  Future<void> updateDataToFirestore(String collectionName, String documentName, Map<String, dynamic> model);
 }

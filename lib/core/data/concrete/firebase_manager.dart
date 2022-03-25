@@ -45,7 +45,8 @@ class FirebaseManager extends FirebaseService {
   @override
   Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> getSecondDataFromFirebase(
       String collectionName, String documentName, String secondCollectionName) async {
-    final result = await firestore.collection(collectionName).doc(documentName).collection(secondCollectionName).get();
+    final result =
+        await firestore.collection(collectionName).doc(documentName).collection(secondCollectionName).orderBy('date', descending: true).get();
     final data = result.docs;
     return data;
   }
@@ -66,5 +67,10 @@ class FirebaseManager extends FirebaseService {
     final result =
         await firestore.collection(collectionName).doc(documentName).collection(secondCollectionName).where(property, isEqualTo: value).get();
     return result.docs;
+  }
+
+  @override
+  Future<void> updateDataToFirestore(String collectionName, String documentName, Map<String, dynamic> model) async {
+    await firestore.collection(collectionName).doc(documentName).update(model);
   }
 }
