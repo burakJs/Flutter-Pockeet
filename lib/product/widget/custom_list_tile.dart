@@ -23,8 +23,7 @@ class CustomListTile extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Card(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15))),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
         color: colors.blackCardBackgroundColor,
         child: ListTile(
           leading: CircleAvatar(
@@ -48,13 +47,9 @@ class CustomListTile extends StatelessWidget {
             style: TextStyle(color: colors.grayColor),
           ),
           trailing: Text(
-            model.isIncome ?? false
-                ? "\$ ${model.money.toString()}"
-                : "\$- ${model.money.toString()}",
+            model.isIncome ?? false ? "\$ ${model.money?.toStringAsFixed(2)}" : "\$- ${model.money?.toStringAsFixed(2)}",
             style: TextStyle(
-              color: model.isIncome ?? false
-                  ? colors.darkBlueColor
-                  : colors.redColor,
+              color: model.isIncome ?? false ? colors.darkBlueColor : colors.redColor,
             ),
           ),
         ),

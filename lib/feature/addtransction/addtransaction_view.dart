@@ -113,7 +113,7 @@ class _AddTransactionState extends State<AddTransaction> {
           Padding(
             padding: EdgeInsets.only(bottom: 40, top: 5),
             child: Text(
-              "\$${balance}",
+              "\$${balance.toStringAsFixed(2)}",
               style: TextStyle(fontSize: 32, color: colors.whiteColor, fontWeight: FontWeight.w500),
             ),
           )

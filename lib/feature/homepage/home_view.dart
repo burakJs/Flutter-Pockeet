@@ -135,7 +135,7 @@ class _HomeViewState extends State<HomeView> {
                             Padding(
                               padding: EdgeInsets.only(bottom: 40, top: 5),
                               child: Text(
-                                '\$$total',
+                                '\$${total.toStringAsFixed(2)}',
                                 style: TextStyle(fontSize: 32, color: colors.yellowColor, fontWeight: FontWeight.w500),
                               ),
                             ),
